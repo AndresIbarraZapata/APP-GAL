@@ -1,0 +1,224 @@
+﻿<div class="content-wrapper"
+     style="background-color: #f9f9f9; min-height: 587px; padding-top: 15px;">
+    <div class="container-fluid">
+        <!--<div class="col-md-2">
+            <div class="box" style="margin-bottom: 10px;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef;">
+                    <h3 class="box-title">
+                        Menú Opciones
+                    </h3>
+                </div>
+                <div class="box-body">
+                    <button class="btn btn-rta col-sm-12"
+                            ng-click="ver_modal_cotizaciones()"
+                            style="margin-bottom: 10px;"
+                            title="Buscar Cotizaciones Generadas"
+                            type="button">
+                        <i class="fa fa-search" style="font-size: 28px;"></i>
+                    </button>
+                    <div ng-if="list_productos_seleccionados.length > 0">
+
+                        <button class="btn btn-rta col-sm-12"
+                                ng-click="cerrar_cotizacion()"
+                                ng-if="obj_encabezado_cotizacion.ESTADO_COTIZACION == 1"
+                                style="margin-bottom: 10px;"
+                                title="Cerrar Cotización"
+                                type="button">
+                            <i class="fa fa-minus-square" style="font-size: 28px;"></i>
+                        </button>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="col-md-12">
+
+            <!--Box producto origen-->
+            <div class="box" style="margin-bottom: 10px; border-top: 3px solid #dadada !important;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef; padding-bottom: 20px;">
+                    <h3 class="box-title">Producto Origen</h3>
+                    <div class="box-tools pull-right">
+
+                        <!--<input class="btn-download-excel"
+                               id="myButtonControlID"
+                               ng-show="list_productos_seleccionados.length > 0"
+                               style="vertical-align: middle;"
+                               type="button"
+                               uib-tooltip="Exportar a excel"
+                               uib-tooltip-placement="left"
+                               uib-tooltip-trigger="mouseenter">-->
+
+                        <button class="btn btn-box-tool btn-rta"
+                                ng-click="show_modal_seleccion_proyecto()"
+                                type="button"
+                                style="height: 40px; width: 40px; padding: 0;">
+                            <i class="fa fa-plus-circle"
+                               style="font-size: 31px;"
+                               tooltip-placement="left"
+                               uib-tooltip="Buscar proyecto"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row no-margin">
+                        <!--<pre>{{data_materiales_producto | json}}</pre>-->
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped table-bordered" 
+                                   ng-if="list_productos_seleccionados.length > 0"
+                                   style="margin-bottom: 0;">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>CÓDIGO</th>
+                                    <th>REFERENCIA</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th style="width: 140px"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in list_productos_seleccionados">
+                                    <td>
+                                        <img alt="zoom"
+                                             class="img-previa"
+                                             src="{{dominio}}/img_rta/{{item.ID_ITEM}}.png" 
+                                             onerror="this.src = 'assets/img/placeholder.png';"/>
+                                        <!--onerror="this.src = 'assets/img/placeholder.png';"-->
+                                    </td>
+                                    
+                                    <td>{{item.ID_ITEM}}</td>
+                                    <td>{{item.ID_REFERENCIA}}</td>
+                                    <td>{{item.DESCRIPCION}}</td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button class="btn btn-rta"
+                                                    ng-click="ver_detalle_item_cot(item)"
+                                                    title="+ Información">
+                                                <i class="fa fa-eye" style="font-size: 20px;"></i>
+                                            </button>
+                                            <button class="btn btn-rta"
+                                                    ng-click="remover_producto_origen()"
+                                                    title="Eliminar el producto de la lista">
+                                                <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                          
+                            <div class="row text-center" ng-show="list_productos_seleccionados.length > 0">
+                                <hr />
+                                <button class="btn btn-rta" 
+                                        ng-click="agregar_producto_destino()"
+                                        title="Copiar producto origen a producto destino"
+                                        style="font-size: 16px;">
+                                    <i class="fa fa-clone" 
+                                       style="font-size: 20px;"></i> Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Box producto destino-->
+            <div class="box" style="margin-bottom: 10px; border-top: 3px solid #dadada !important;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef; padding-bottom: 20px;">
+                    <h3 class="box-title">Producto Destino</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row no-margin">
+                        
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped table-bordered" ng-if="list_productos_destino.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>CÓDIGO</th>
+                                        <th>REFERENCIA</th>
+                                        <th>DESCRIPCIÓN</th>
+                                        <th style="width: 140px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in list_productos_destino">
+                                        <td>
+                                            <img alt="zoom"
+                                                 class="img-previa"
+                                                 src="{{dominio}}/img_rta/{{item.ID_ITEM}}.png" 
+                                                 onerror="this.src = 'assets/img/placeholder.png';"/>
+                                        </td>
+                              
+                                        <td>
+                                            <input class="form-control" 
+                                                   ng-model="item.ID_ITEM" 
+                                                   style="text-transform: uppercase" 
+                                                   type="text">
+                                        </td>
+                                        <td>
+                                            <input class="form-control" 
+                                                   ng-model="item.ID_REFERENCIA" 
+                                                   style="text-transform: uppercase" 
+                                                   type="text">
+                                        </td>
+                                        <td>
+                                            <input class="form-control" 
+                                                   ng-model="item.DESCRIPCION" 
+                                                   style="text-transform: uppercase" 
+                                                   type="text">
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-rta"
+                                                        ng-click="ver_detalle_item_cot(item)"
+                                                        title="+ Información">
+                                                    <i class="fa fa-eye" style="font-size: 20px;"></i>
+                                                </button>
+                                                <button class="btn btn-rta"
+                                                        ng-click="editar_producto_destino(item)"
+                                                        title="Editar insumos producto">
+                                                    <i class="fa fa-pencil" style="font-size: 20px;"></i>
+                                                </button>
+                                                <button class="btn btn-rta"
+                                                        ng-click="remover_producto_destino()"
+                                                        title="Eliminar el producto destino">
+                                                    <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                                                </button>
+                                            </div>
+                                            <!--<div class="btn-group-vertical">
+                                        <button class="btn btn-rta"
+                                                ng-click="ver_detalle_item_cot(item)"
+                                                title="+ Información"
+                                                style="border-bottom-color: #32241d !important;">
+                                            <i class="fa fa-plus" style="font-size: 20px;"></i>
+                                        </button>
+                                        <button class="btn btn-rta"
+                                                ng-click="editar_producto(item)"
+                                                ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                                title="Editar el producto de la lista"
+                                                style="border-top-color: #32241d !important;border-bottom-color: #32241d !important;">
+                                            <i class="fa fa-pencil" style="font-size: 20px;"></i>
+                                        </button>
+                                        <button class="btn btn-rta"
+                                                ng-click="remover_producto(item)"
+                                                ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                                title="Eliminar el producto de la lista"
+                                                style="border-top-color: #32241d !important;">
+                                            <i class="fa fa-trash-o" style="font-size: 22px;"></i>
+                                        </button>
+                                    </div>-->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view="templateModal"></div>

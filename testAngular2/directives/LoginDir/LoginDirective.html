@@ -1,0 +1,73 @@
+﻿<div id="container-center" ng-if="showmodal" style="background-color:  rgba(255, 255, 255, 1);">
+    <div id="general-container" style="background: url(./Assets/img/fondo_madera.jpg); height: 100%; ">
+        <div id="bodyRegister">
+            <div ng-if="showlogin">
+                <div class="container">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="panel panel-warning font-madecentro" style="box-shadow: 1px 1px 27px 1px black;">
+                            <div class="panel-heading">
+                                <div class="panel-title">Iniciar sesión</div>
+                            </div>
+                            <div style="padding-top: 30px" class="panel-body">
+                                <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                                <form id="loginform" class="form-horizontal" role="form">
+                                    <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="login-username" type="text" class="form-control" name="username" ng-model="credentials.username" placeholder="Email" style="font-size: 16px;">
+                                    </div>
+                                    <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="Contraseña" ng-model="credentials.password" style="font-size: 16px;">
+                                    </div>
+                                    <!--<div style="margin-bottom: 15px">
+                                        <div id="RecuperarPass" class="form-input-container" style="text-align: left; color: gray; font-weight: 700; font-size: 15px; cursor: pointer;">
+                                            <span ng-click="RecuperarPass()" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;"> ¿Olvidaste tu contraseña?</span>
+                                        </div>
+                                    </div>-->
+                                    <div style="margin-top: 10px" class="form-group">
+                                        <!-- Button -->
+                                        <div class="col-sm-12 controls">
+                                            <button type="submit" ng-click="login(credentials)" class="btn btn-mdc btn-block btn-flat font-madecentro" style="cursor: pointer; font-size: 17px;">
+                                                Entrar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="javascript:;" class="ico-logo-madecentro"></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="frmRecuperarPass">
+                <div class="card-light-register" style="position: relative;z-index: 1;width: 340px;margin: 33px auto;">
+                    <h3 style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; text-align: center; font-weight: 700;color: rgb(130, 130, 130);font-size: 20px;">Recupera tu cuenta</h3>
+                    <p style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 16px; color: rgb(130, 130, 130);">Ingresa tu usuario para recibir un correo con un enlace de recuperación.</p>
+                    <hr />
+                    <form class="margin-separator">
+                        <div class="input-group" style="padding-bottom: 20px;">
+                            <span class="input-group-addon" id="sizing-addon2">@</span>
+                            <input type="email" class="form-control" placeholder="Email.." ng-model="Forgot.email" id="emailForgot">
+                        </div>
+                        <hr />
+                        <div class="text-center" style="padding-top: 15px;padding-bottom: 15px;">
+                            <button type="button" ng-click="CancelarRecuperarPass()" class="btn btn-default font-madecentro" style="font-size: 17px;">
+                                Cancelar
+                            </button>
+                            <button type="submit" ng-click="Accept(Forgot)" class="btn btn-mdc font-madecentro" style="font-size: 17px;">
+                                Enviar
+                            </button>
+                        </div>
+                        <div class="clearing sin-fondo"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<alertdialog control="objectDialog" getdata="ConfirmResult(valor,funcion)"></alertdialog>
+
+
+

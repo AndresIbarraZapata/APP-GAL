@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html ng-app="appRTA" lang="es">
+<head>
+    <!--* @author             : Jose Daniel Estrada Pulgarin.-->
+    <!--* @email              : jdanielestrada18@gmail.com-->
+    <!--* @github             : github.com/jdanielestrada-->
+    <!--* @Inicio de proyecto : 13-Sep-2016-->
+    <!--* @Date Versión       : 10-Octubre-2017-->
+    <style>
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#9D5206" />
+    <script type="application/javascript">
+        var VERSION_APP = "1.0.0";
+        var DATE_VERSION = "201804201522" //YYYYMMDDHHmm
+    </script>
+    <!--Estilos-->
+    <link href="assets/vendors/bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/vendors/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/vendors/ngProgress/ngProgress.css" rel="stylesheet" />
+    <link href="assets/vendors/ionicons-2.0.1/ionicons-2.0.1/css/ionicons.css" rel="stylesheet" />
+    <link href="assets/vendors/Toastr/toastr.css" rel="stylesheet" />
+    <link href="assets/vendors/alertify/css/alertify.css" rel="stylesheet" />
+    <link href="assets/vendors/alertify/css/themes/default.css" rel="stylesheet" />
+    <link href="assets/vendors/fancyBox/source/jquery.fancybox.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <link href="assets/css/SpinKit.css" rel="stylesheet" />
+    <link href="assets/css/hover.css" rel="stylesheet" />
+    <link href="assets/vendors/DataPicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="assets/vendors/smartTable/smart-table.css" rel="stylesheet" />
+    <link href="assets/css/_all-skins.min.css" rel="stylesheet" />
+    <link href="assets/vendors/select2-4.0.1/select2-4.0.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="assets/vendors/bootstrap-daterangepicker/bootstrap-daterangepicker-master/daterangepicker.css" rel="stylesheet" />
+    <link href="assets/vendors/SweetAlert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="assets/css/component.css?v=1.0.0" rel="stylesheet" />
+    <!--<link href="assets/css/component_buttons.css" rel="stylesheet" />-->
+    <!--estilos principales-->
+    <link href="assets/css/RTA.min.css?v=1.0.0" rel="stylesheet" />
+    <title>Cotizaciones | GALES</title>
+    <!--<link rel="shortcut icon" href="favicon.ico" />-->
+</head>
+<body class="hold-transition skin-yellow-light sidebar-mini" ng-cloak ng-controller="app">
+    <div class="wrapper" style="background-color: rgb(249, 249, 249);">
+        <header class="main-header" ng-if="$root.mostrarMenu  && $root.showMenuByErrorHttp">
+            <!-- Logo/ siglas Madecentro -->
+            <a class="logo logo-mobile"
+               href="javascript:;"
+               ui-sref="home">
+
+                <img class="logo-lg"
+                     src="assets/img/logo_gales.png" />
+            </a>
+            <nav class="navbar navbar-static-top"
+                 role="navigation"
+                 style="box-shadow: 1px 1px 23px -8px #000000;">
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/Home' }">
+                            <a href="javascript:;"
+                               style="padding-top: 22px; padding-bottom: 27px; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);"
+                               ui-sref="home">
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="divider-vertical"
+                            ng-if="verificarPerfil('cotProductoDesarrollado')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoDesarrollado' }"
+                            ng-if="verificarPerfil('cotProductoDesarrollado')">
+                            <a href="javascript:;"
+                               ui-sref="cotProductoDesarrollado"
+                               style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
+                                <span class="font-madecentro">
+                                    &nbsp;Cotizaciones
+                                </span>
+                            </a>
+                        </li>
+                        <!--<li class="divider-vertical"
+                            ng-if="verificarPerfil('cotProductoModificado')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoModificado' }"
+                            ng-if="verificarPerfil('cotProductoModificado')">
+                            <a href="javascript:;"
+                               ui-sref="cotProductoModificado"
+                               style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
+                               
+                                <span class="font-madecentro">
+                                    &nbsp;P. Modificado
+                                </span>
+                            </a>
+                        </li>-->
+                        <!--<li class="divider-vertical"
+                                ng-if="verificarPerfil('cotProductoNuevo')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoNuevo' }"
+                            ng-if="verificarPerfil('cotProductoNuevo')">
+                            <a href="javascript:;"
+                               ui-sref="cotProductoNuevo"
+                               style="padding-top: 15px; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
+                                <span class="font-madecentro">
+                                    &nbsp;P. Nuevo
+                                </span>
+                            </a>
+                        </li>-->
+                        
+                        <!--<li class="divider-vertical"
+                            ng-if="verificarPerfil('cotRegNuevoProducto')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotRegNuevoProducto' }"
+                            ng-if="verificarPerfil('cotRegNuevoProducto')">
+                            <a href="javascript:;"
+                               ui-sref="cotRegNuevoProducto"
+                               style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
+                             
+                                <span class="font-madecentro">
+                                    &nbsp;P. Nuevo
+                                </span>
+                            </a>
+                        </li>-->
+                        
+
+                        <!--<li class="divider-vertical"></li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Procesos especiales <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="right: 0; left: inherit;">
+                                <li ng-class="{'active' : location.path() == '/adminUploadArchivos' }"
+                                    ng-if="verificarPerfil('adminUploadArchivos')">
+                                    <a href="javascript:;"
+                                       ui-sref="adminUploadArchivos">
+                                        <span class="font-madecentro">
+                                            &nbsp;Gestión de costos
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li ng-class="{'active' : location.path() == '/uploadImagenProducto' }"
+                                    ng-if="verificarPerfil('uploadImagenProducto')">
+                                    <a href="javascript:;"
+                                       ui-sref="uploadImagenProducto">
+                                        <span class="font-madecentro">
+                                            &nbsp;Gestión archivos producto desarrollado
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li ng-class="{'active' : location.path() == '/gestionManoObraCif' }"
+                                    ng-if="verificarPerfil('gestionManoObraCif')">
+                                    <a href="javascript:;"
+                                       ui-sref="gestionManoObraCif">
+                                        <span class="font-madecentro">
+                                            &nbsp;Gestión Mano de obra / CIF
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li ng-class="{'active' : location.path() == '/gestionEspesores' }"
+                                    ng-if="verificarPerfil('gestionEspesores')">
+                                    <a href="javascript:;"
+                                       ui-sref="gestionEspesores">
+                                        <span class="font-madecentro">
+                                            &nbsp;Gestión espesores
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>-->
+                        <!-- Cuenta del usuario -->
+                        <li class="dropdown user user-menu">
+                            <a class="dropdown-toggle"
+                               data-toggle="dropdown"
+                               href="javascript:;">
+                                <img class="user-image"
+                                     ng-src="{{$root.img_perfil}}"
+                                     onerror="this.src = 'assets/img/buscar_usuario.png';">
+                            </a>
+                            <ul class="dropdown-menu"
+                                style="box-shadow: 0px 3px 8px 2px rgba(89, 88, 88, 0.74);">
+                                <!-- imagen del usuario -->
+                                <li class="user-header"
+                                    style="color: white">
+                                    <span style="color: white; text-align: -webkit-right;">
+                                        <span class="font-madecentro text-capitalize"
+                                              style="font-size: 18px; text-shadow: 0 0px 0 rgba(255, 255, 255, .25);">
+                                            {{$root.usuario_log}}
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="user-footer text-center">
+                                    <a class="btn btn-default btn-flat"
+                                       href="javascript:;"
+                                       ng-click="cerrarSession()">
+                                        <span class="font-madecentro"
+                                              style="font-size: 16px;">
+                                            Cerrar sesión&nbsp;
+                                        </span>
+                                        <i class="fa fa-sign-out"
+                                           style="font-size: 20px;"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="app-outer-container" style="padding-top: 35px;">
+            <div ui-view></div>
+        </div>
+        <div class="load-window" style="z-index: 2000;" id="back-alerts-version">
+            <div id="alert-old-version-app" class="bar-old-version-app font-madecentro animated bounceInUp">
+                <span style="color: rgba(255, 255, 255, 0.901961); display: inline-block; margin-right: 10px; text-decoration: none;">¡Existe una nueva versión de la aplicación, la pagina se refrescará en breve..!</span>
+                <a class="btn btn-default btn-sm btn-refresh-app-now "
+                   ng-click="reload_app()">
+                    Refrescar ahora!
+                </a>
+            </div>
+            <div id="alert-refresh-required" class="bar-refresh-required-app font-madecentro animated bounceInUp">
+                <span style="color: rgba(255, 255, 255, 0.901961); display: inline-block; margin-right: 10px; text-decoration: none;">¡Se requiere la actualización de la página, ésta se refrescará en breve..!</span>
+                <a class="btn btn-default btn-sm btn-refresh-app-now "
+                   ng-click="reload_app()"
+                   style="color: #3c8dbc">
+                    Refrescar ahora!
+                </a>
+            </div>
+        </div>
+    </div>
+    <alertdialog control="objectDialog" getdata="ConfirmResult(valor,funcion)"></alertdialog>
+    <!--vendor-->
+    <script src="assets/vendors/Jquery/jquery-1.11.0.js"></script>
+    <script src="assets/vendors/jQueryUI/jquery-ui.js"></script>
+    <script src="assets/vendors/bootstrap-3.3.7/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+    <script src="assets/vendors/angular-1.5.8/angular-1.5.8/angular.js"></script>
+    <script src="assets/vendors/angular-1.5.8/angular-1.5.8/angular-sanitize.js"></script>
+    <script src="assets/vendors/angular-1.5.8/angular-1.5.8/angular-animate.js"></script>
+    <script src="assets/vendors/angular-1.5.8/angular-1.5.8/angular-cookies.js"></script>
+    <script src="assets/vendors/angular-1.5.8/angular-1.5.8/angular-messages.js"></script>
+    <script src="assets/vendors/ngProgress/ngProgress.js"></script>
+    <script src="assets/vendors/Toastr/toastr.min.js"></script>
+    <script src="assets/vendors/Moment/moment.js"></script>
+    <script src="assets/vendors/Moment/moment-with-locales.js"></script>
+    <script src="assets/vendors/alertify/alertify.min.js"></script>
+    <script src="assets/vendors/Angular-bootstrap/ui-bootstrap-tpls-2.0.1.min.js"></script>
+    <script src="assets/vendors/fancyBox/source/jquery.fancybox.js"></script>
+    <script src="assets/vendors/underscore/underscore-min.js"></script>
+    <script src="assets/vendors/smartTable/smart-table.js"></script>
+    <script src="assets/vendors/async/async.js"></script>
+    <script src="assets/vendors/Chartjs/Chart.min.js"></script>
+    <script src="assets/vendors/DataPicker/bootstrap-datetimepicker.js"></script>
+    <script src="assets/vendors/select2-4.0.1/select2-4.0.1/dist/js/select2.min.js"></script>
+    <script src="assets/vendors/select2-4.0.1/select2-4.0.1/dist/js/i18n/es.js"></script>
+    <script src="assets/vendors/uirouter/angular-ui-router.js"></script>
+    <script src="assets/vendors/JsBarcode/JsBarcode.all.min.js"></script>
+    <script src="assets/vendors/Transitions/js/modernizr.custom.js"></script>
+    <script src="assets/vendors/bootstrap-daterangepicker/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+    <script src="assets/vendors/ng-click-select/ng-click-select.js"></script>
+    <script src="assets/vendors/SweetAlert2/sweetalert2.min.js"></script>
+    <script src="assets/vendors/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+    <script src="assets/vendors/PapaParse-4.4.0/papaparse.min.js"></script>
+    <script src="assets/vendors/angular-file-upload-master/angular-file-upload-shim.min.js"></script>
+    <script src="assets/vendors/angular-file-upload-master/angular-file-upload.min.js"></script>
+    <script src="assets/vendors/alasql/alasql.min.js"></script>
+    <script src="assets/vendors/alasql/xlsx.core.min.js"></script>
+
+    <!--<script src="assets/vendors/BootstrapFileInput/fileinput.min.js"></script>-->
+    <!--modules-->
+    <script type="text/javascript" src="app.js?v=1.0.0"></script>
+    <script type="text/javascript" src="modules/Home/home.controller.js?v=1.0.0"></script>
+    <script type="text/javascript" src="modules/UserLogin/userLogin.controller.js?v=1.0.0"></script>
+    <script src="modules/cotProductoDesarrollado/cotProductoDesarrollado.controller.js?v=1.0.0"></script>
+    <script src="modules/adminUploadArchivos/adminUploadArchivos.controller.js?v=1.0.0"></script>
+    <script src="modules/cotProductoNuevo/cotProductoNuevo.controller.js?v=1.0.0"></script>
+    <script src="modules/uploadImagenProducto/uploadImagenProducto.controller.js?v=1.0.0"></script>
+    <script src="modules/cotProductoModificado/cotProductoModificado.controller.js?v=1.0.0"></script>
+    <script src="modules/gestionManoObraCif/gestionManoObraCif.controller.js?=1.0.0"></script>
+    <script src="modules/gestionEspesores/gestionEspesores.controller.js?=1.0.0"></script>
+    <script src="modules/cotRegNuevoProducto/cotRegNuevoProducto.controller.js?=1.0.0"></script>
+
+    <!--modals-->
+    <script src="modules/modals/modal.confirmaciones.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.addNuevoProyecto.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.busquedaCotizaciones.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.detalleItemCot.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.editarItemCot.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.busquedaCostosMdc.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.busquedaProyectos.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.detalleProducto.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.detalleProductoModificacionInsumos.controller.js?v=1.0.0"></script>
+    <script src="modules/modals/modal.busquedaInsumosProducto.controller.js?v=1.0.0"></script>
+    <!-- Constants -->
+    <script src="utils/constants.js?v=1.0.0"></script>
+    <!--directives-->
+    <script src="directives/LoadingDir/AlertDir.js?v=1.0.0"></script>
+    <script src="directives/LoginDir/loginDir.js"></script>
+    <script src="directives/ValidacionautoDir/validacionAutoDir.js?v=1.0.0"></script>
+    <script src="directives/repeatDone/repeatdone.js"></script>
+    <script src="directives/sortable/sortable.js"></script>
+    <script src="directives/pageSelect/pageSelect.js"></script>
+    <!--filter-->
+    <script type="text/javascript" src="filter/dateFilter.js?v=1.0.0"></script>
+    <!--services-->
+    <script type="text/javascript" src="services/parametros.service.js?v=1.0.0"></script>
+    <script type="text/javascript" src="services/modal.service.js?v=1.0.0"></script>
+    <script type="text/javascript" src="services/login.service.js?v=1.0.0"></script>
+    <script type="text/javascript" src="services/config.service.js?v=1.0.0"></script>
+    <script src="services/rta.service.js?v=1.0.0"></script>
+</body>
+</html>

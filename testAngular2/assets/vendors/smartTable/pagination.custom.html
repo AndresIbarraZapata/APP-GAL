@@ -1,0 +1,17 @@
+﻿<nav ng-if="pages.length >= 2">
+    <ul class="pagination">
+        <li>
+            <a ng-click="selectPage(1)">Inicio</a>
+        </li>
+        <li>
+            <a ng-click="selectPage(currentPage - 1)">&lt;</a>
+        </li>
+        <li>
+            <a style="    display: inline-flex;"><page-select></page-select>&nbsp;&nbsp; de {{numPages}}</a>
+        </li>
+        <li>
+            <a ng-click="selectPage(currentPage + 1)">&gt;</a>
+        </li>
+        <li><a ng-click="selectPage(numPages)">Fin</a></li>
+    </ul>
+</nav>

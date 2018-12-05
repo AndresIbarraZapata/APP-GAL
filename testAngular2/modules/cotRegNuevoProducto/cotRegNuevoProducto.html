@@ -1,0 +1,181 @@
+﻿<div class="content-wrapper"
+     style="background-color: #f9f9f9; min-height: 587px; padding-top: 15px;">
+    <div class="container-fluid">
+
+        <div class="col-md-12">
+
+            <!--Box producto destino-->
+            <div class="box" style="margin-bottom: 10px; border-top: 3px solid #dadada !important;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef;">
+                    <h3 class="box-title">
+                        Registrar Nuevo Producto
+                    </h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool"
+                                ng-click="limpiar_formulario()"
+                                tooltip-placement="top"
+                                type="button"
+                                uib-tooltip="Limpiar Formulario">
+                            <i class="fa fa-refresh"
+                               style="font-size: 23px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row no-margin">
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>CÓDIGO</th>
+                                        <th>REFERENCIA</th>
+                                        <th>DESCRIPCIÓN</th>
+                                        <!--<th style="width: 140px"></th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="form-control"
+                                                   ng-model="obj_nuevo_producto.ID_ITEM"
+                                                   style="text-transform: uppercase"
+                                                   type="text">
+                                        </td>
+                                        <td>
+                                            <input class="form-control"
+                                                   ng-model="obj_nuevo_producto.ID_REFERENCIA"
+                                                   style="text-transform: uppercase"
+                                                   type="text">
+                                        </td>
+                                        <td>
+                                            <input class="form-control"
+                                                   ng-model="obj_nuevo_producto.DESCRIPCION"
+                                                   style="text-transform: uppercase"
+                                                   type="text">
+                                        </td>
+                                        <!--<td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-rta"
+                                                        ng-click="ver_detalle_item_cot(obj_nuevo_producto)"
+                                                        title="+ Información">
+                                                    <i class="fa fa-eye" style="font-size: 20px;"></i>
+                                                </button>
+                                                <button class="btn btn-rta"
+                                                        ng-click="editar_producto_destino(obj_nuevo_producto)"
+                                                        title="Editar insumos producto">
+                                                    <i class="fa fa-pencil" style="font-size: 20px;"></i>
+                                                </button>
+                                                <button class="btn btn-rta"
+                                                        ng-click="remover_producto_destino()"
+                                                        title="Eliminar el producto destino">
+                                                    <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                                                </button>
+                                            </div>
+
+                                        </td>-->
+                                    </tr>
+                                </tbody>
+                            </table>              
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-default" style="border-top: 3px solid #b9e400;">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        Insumos
+                                    </h3>
+                                    <div class="box-tools pull-right">
+
+                                        <!--<input class="btn-download-excel"
+                                   ng-click="export_file_insumos()"
+                                   style="vertical-align: middle;"
+                                   type="button"
+                                   uib-tooltip="Exportar a excel"
+                                   uib-tooltip-placement="left"
+                                   uib-tooltip-trigger="mouseenter">-->
+
+                                        <button class="btn btn-box-tool btn-rta"
+                                                ng-click="show_modal_seleccion_insumo()"
+                                                type="button"
+                                                style="height: 40px; width: 40px; padding: 0;">
+                                            <i class="fa fa-plus-circle"
+                                               style="font-size: 31px;"
+                                               tooltip-placement="left"
+                                               uib-tooltip="Agregar nuevo insumo"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-hover table-condensed table-striped"
+                                           st-table="dataInsumosProducto"
+                                           ng-if="dataInsumosProducto.length > 0">
+                                        <thead>
+                                            <tr>
+                                                <th st-sort="ID_COD_ITEM_C">Código</th>
+                                                <th st-sort="ID_REFER_C">Referencia</th>
+                                                <th st-sort="DESCRIPCION_C">Descripción</th>
+                                                <!--<th st-sort="CANTIDAD_BASE">Cantidad Base</th>-->
+                                                <th st-sort="CANTIDAD_REQUERIDA">Cantidad consumo</th>
+                                                <th st-sort="CANT_DISP">Cantidad Disponible</th>
+                                                <th st-sort="COSTO_PROM_FINAL">Costo Final</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in dataInsumosProducto">
+                                                <td>{{item.ID_COD_ITEM_C}}</td>
+                                                <td>{{item.ID_REFER_C}}</td>
+                                                <td>{{item.DESCRIPCION_C}}</td>
+                                                <!--<td>{{item.CANTIDAD_BASE | number: 2}}</td>-->
+                                                <td>{{item.CANTIDAD_REQUERIDA | number: 2}}</td>
+
+                                                <td>{{item.CANT_DISP | number: 2}}</td>
+                                                <td>{{item.COSTO_PROM_FINAL | currency:"$":0}}</td>
+                                                <td>
+                                                    <button class="btn btn-rta"
+                                                            ng-click="eliminar_insumo_adjunto(item)"
+                                                            title="Eliminar insumo">
+                                                        <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="text-center"
+                                                    colspan="8"
+                                                    style="background: rgb(239, 239, 239);">
+                                                    <div st-displayed-pages="10"
+                                                         st-items-by-page="10"
+                                                         st-pagination=""
+                                                         st-template="pagination.custom.html"></div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-2 col-md-offset-5">
+                            <button class="btn btn-box-tool btn-rta col-md-12"
+                                    ng-click="guardar_producto()"
+                                    style="margin-bottom: 15px"
+                                    type="button"
+                                    tooltip-placement="left"
+                                    uib-tooltip="Almacenar producto">
+                                <i class="fa fa-check-circle"
+                                   style="font-size: 31px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view="templateModal"></div>

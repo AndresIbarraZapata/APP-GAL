@@ -1,0 +1,73 @@
+﻿<div id="container-center" style="background-color: rgba(255, 255, 255, 1);">
+    <div id="general-container" style="background: #b7b7b7 no-repeat; height: 100%;background-size: 100%;">
+
+        <div class="col-md-2"
+             style="background-color:#0f1f52;;height: 100%;box-shadow: -17px 0 9px 19px #292929">
+
+            <div style="margin: 170px auto;">
+                <img src="./assets/img/logo_gales.png" class="img-responsive center-block" />
+            </div>
+
+        </div>
+        <div class="col-md-10">
+            <div class="col-md-4 col-md-offset-4" style="padding-top: 140px;">
+                <div class="panel panel-default font-rta" style="box-shadow: 1px 1px 12px -4px black">
+                    <div class="panel-heading text-center">
+                        <div class="panel-title">Iniciar sesión</div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <form id="loginform" class="form-horizontal" role="form">
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"
+                                      style="background-color: #fff;border-right-width: 0;"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="login-username" type="text" class="input-lg form-control" name="username" ng-model="credentials.usuario" placeholder="Email" style="font-size: 16px;border-left-width: 0;">
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"
+                                      style="background-color: #fff;border-right-width: 0;"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="login-password" type="password" class="input-lg form-control" name="password" placeholder="Contraseña" ng-model="credentials.password" style="font-size: 16px;border-left-width: 0;">
+                            </div>
+                            <!--<div style="margin-bottom: 15px">
+                                <div id="RecuperarPass" class="form-input-container" style="text-align: left; color: gray; font-weight: 700; font-size: 15px; cursor: pointer;">
+                                    <span ng-click="RecuperarPass()" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;"> ¿Olvidaste tu contraseña?</span>
+                                </div>
+                            </div>-->
+                            <div style="margin-top: 10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12 controls">
+                                    <button type="submit" ng-click="login(credentials)" class="btn-lg btn btn-rta btn-block btn-flat font-rta" style="cursor: pointer; font-size: 17px;">
+                                        Entrar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="load-window"
+     ng-show="showSpinner" 
+     style="z-index: 10000;">
+    <div class="outer-container">
+        <div class="inner-container">
+            <div class="animated fadeIn">
+            
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

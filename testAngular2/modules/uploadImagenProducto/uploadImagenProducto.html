@@ -1,0 +1,90 @@
+﻿<div class="content-wrapper"
+     style="background-color: #f9f9f9; min-height: 587px; padding-top: 15px;">
+    <div class="container-fluid">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box" style="margin-bottom: 10px;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef;">
+                    <h3 class="box-title">
+                        Registrar Nuevo Producto
+                    </h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool"
+                                ng-click="limpiar_formulario()"
+                                tooltip-placement="top"
+                                type="button"
+                                uib-tooltip="Limpiar Formulario">
+                            <i class="fa fa-refresh"
+                               style="font-size: 23px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <fieldset id="myFieldset">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Producto</label>
+                                    <select class="form-control font-madecentro font_size_15px"
+                                            id="seleccion_proyecto"></select>
+                                    <!--<input type="text" class="form-control" placeholder="Nombres" ng-model="obj_registro_nuevo_producto.codigo_producto" style="text-transform: uppercase">-->
+                                </div>
+                            </div>
+                            <!--<div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referencia</label>
+                                    <input type="text" class="form-control" placeholder="Documento " ng-model="obj_registro_nuevo_producto.referencia" style="text-transform: uppercase">
+                                </div>
+                            </div>-->
+                            <div class="col-md-3">
+                                <div class="form-group"
+                                     style="padding-top: 29px;">
+                                    <span style="font-size: 18px;" title="Adjuntar Archivo">
+                                        <label for="fichero" style="cursor: pointer; color: #b5de03; font-weight: bold; font-size: 16px;" class="font-rta">
+                                            <i class="fa fa-cloud-upload" aria-hidden="true" style="font-size: 24px;"></i>
+                                            Adjuntar Imagen
+                                        </label>
+                                        <span class="font-rta" style="font-size: x-small; color: gray;">(Formatos .png .jpg)</span>
+                                    </span>
+                                    <input id="fichero" name="importArchivo" type="file" ng-file-select="validar_adjunto($files)" style="display: none"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3" ng-show="list_adjuntos.length > 0">
+                                <div class="form-group" style="padding-top: 30px;">
+                                    <label class="sr-only">File</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="background-color: #fff;border-right: 0;">
+                                            <i class="fa fa-check" style="color: #b5df03;font-size: 19px;"></i>
+                                        </div>
+                                        <input class="form-control"
+                                               disabled
+                                               ng-model="obj_data_adjunto.name"
+                                               style="background-color: #fff; border-left: 0; padding-left: 0; text-overflow: ellipsis;" 
+                                               type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center">
+                            <div class="col-md-2 col-md-offset-5">
+                                <button class="btn btn-box-tool btn-rta col-md-12"
+                                        ng-click="guardar_producto()"
+                                        style="margin-bottom: 15px"
+                                        type="button"
+                                        tooltip-placement="left"
+                                        uib-tooltip="Registrar Producto">
+                                    <i class="fa fa-check-circle"
+                                       style="font-size: 31px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view="templateModal"></div>
