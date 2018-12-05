@@ -72,7 +72,7 @@
     <Content Include="assets\css\component.css" />
     <Content Include="assets\css\component_buttons.css" />
     <Content Include="assets\css\hover.css" />
-    <Content Include="assets\css\RTA.min.css" />
+    <Content Include="assets\css\App.min.css" />
     <Content Include="assets\css\SpinKit.css" />
     <Content Include="assets\css\_all-skins.min.css" />
     <Content Include="assets\img\buscar_usuario.png" />
@@ -1801,6 +1801,7 @@
     <Content Include="assets\vendors\PapaParse-4.4.0\README.md" />
     <Content Include="assets\vendors\PapaParse-4.4.0\tests\long-sample.csv" />
     <Content Include="assets\vendors\PapaParse-4.4.0\tests\sample.csv" />
+    <None Include="Properties\PublishProfiles\GAL_APP.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

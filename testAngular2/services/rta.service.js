@@ -44,10 +44,28 @@
             insertEspesores: insertEspesores,
             insertManoObra: insertManoObra,
             
-            insertNuevoProducto: insertNuevoProducto
+            insertNuevoProducto: insertNuevoProducto,
+            generaPdfCotizacion: generaPdfCotizacion
         };
 
+        function generaPdfCotizacion(request) {
+            return $http.post(configService.ApiUrls.UrlGestionCotizaciones + "generarpdfcotizacion",
+                    JSON.stringify({
+                        "template": request.htmlToPdf,
+                        nombre_archivo: request.nombre_archivo
+                    }))
+                .then(generaPdfCotizacionComplete)
+                .catch(generaPdfCotizacionFailed);
 
+            function generaPdfCotizacionComplete(response) {
+                return response.data;
+            }
+
+            function generaPdfCotizacionFailed(error) {
+                toastr.error('XHR falló en generaPdfCotizacion', error);
+                return error;
+            }
+        }
 
         function getInformacioncliente(documentoCliente) {
             return $http.get(configService.ApiUrls.UrlGestionCotizaciones + "get_informacion_cliente/" + documentoCliente)

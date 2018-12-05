@@ -15,6 +15,7 @@
         function init() {
 
             //GALES
+
             vm.getInformacioncliente = getInformacioncliente,
 
             vm.show_modal_seleccion_proyecto = show_modal_seleccion_proyecto;
@@ -33,7 +34,7 @@
             vm.list_productos_seleccionados = [];
 
             vm.obj_encabezado_cotizacion = {
-                cs_cotizacion:"",
+                //cs_cotizacion:"",
                 nombre_cliente: "",
                 documento_cliente: "",
                 codigo_cliente: "",
@@ -88,10 +89,51 @@
                 vr_descuento: 0,
                 total: 0
             };
-
-
+            
             //GALES
+            var requestPdf={}
+            $scope.imprimirCotizacion = function () {
+                //creamos el pdf en el servidor y abrimos en una nueva ventana el link obtenido
+                crearHtml();
 
+                requestPdf.cs_cotizacion = vm.obj_encabezado_cotizacion.cs_cotizacion;
+                requestPdf.codigo_cliente = vm.obj_encabezado_cotizacion.codigo_cliente;
+                requestPdf.nombre_archivo = requestPdf.cs_cotizacion + requestPdf.codigo_cliente;
+
+                vm.objectDialog.LoadingDialog("...");
+
+                RTAService.generaPdfCotizacion(requestPdf)
+                    .then(function (result) {
+
+                        vm.objectDialog.HideDialog();
+
+                        if (result !== undefined && result.MSG === "OK") {
+                            console.log("archivo pdf creado")
+                            // mostramos una url con la vista pdf
+                            window.open(vm.dominio + "/sys_files/" + requestPdf.nombre_archivo + ".pdf", "_blank");
+                        }
+                    });
+
+            };
+            
+            function crearHtml() {
+                requestPdf = {
+                    htmlToPdf: ""
+                };
+  
+                //clonamos el div, y eliminamos los input, se envia el resultado a la API
+                var htmlTemp = $("#detalleCot").clone();
+                //htmlTemp.find("img").remove();
+                htmlTemp.find("input").remove();
+                htmlTemp.find("td.ng-hide").remove();
+                htmlTemp.find("div.ng-hide").remove();
+                //htmlTemp.find(".logo-menu-app").attr('src', url_base_server +  '/SGD/ico-logo-madecento.png');
+                //htmlTemp.find("link").attr('href', url_base_server +  '/SGD/bootstrap.min.css');//imgCotizacion
+                htmlTemp.find("link").attr('href', 'http://localhost/sys_files/bootstrap.css');
+                htmlTemp.find("#imgCotizacion").attr('src', 'http://localhost/sys_files/logo_gales.png');
+                requestPdf.htmlToPdf = htmlTemp.html();
+            }
+            
             function totalizar_producto() {
 
                 vm.obj_totales.total = 0;
@@ -103,7 +145,13 @@
 
                 vm.obj_totales.vr_descuento = vm.obj_totales.total * ((vm.obj_totales.pj_descuento || 0) / 100);
 
+                vm.obj_totales.pj_iva = $constants.vr_iva;
+                
                 vm.obj_totales.total = vm.obj_totales.total - vm.obj_totales.vr_descuento;
+                vm.obj_totales.base = vm.obj_totales.total;
+                vm.obj_totales.vr_iva = vm.obj_totales.total * ((vm.obj_totales.pj_iva || 0) / 100);
+
+                vm.obj_totales.total += vm.obj_totales.vr_iva;
             }
 
             function getInformacioncliente() {
@@ -242,6 +290,7 @@
                         vm.obj_encabezado_cotizacion.c_forma_pago = cotizacion.FORMA_PAGO;
                         vm.obj_encabezado_cotizacion.d_forma_pago = cotizacion.D_FORMA_PAGO;
                         vm.obj_encabezado_cotizacion.correo_cliente = cotizacion.EMAIL_CLIENTE;
+                        vm.obj_encabezado_cotizacion.fecha_cotizacion = cotizacion.FECHA_COTIZACION;
                     
                         $('#dpFechaCotizacion').data("DateTimePicker").date(moment(cotizacion.FECHA_COTIZACION));
 

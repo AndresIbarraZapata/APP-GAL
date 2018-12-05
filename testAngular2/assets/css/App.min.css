@@ -551,13 +551,11 @@ a {
     .main-header .logo .logo-lg {
         display: block;
         height: 65px;
-        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35);
-        -ms-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35);
         z-index: 1200;
         position: absolute;
         display: block;
         cursor: pointer;
+        margin-top: 3px;
     }
 
     .main-header .logo .logo-mini {

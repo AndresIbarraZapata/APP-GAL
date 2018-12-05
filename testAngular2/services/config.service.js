@@ -16,11 +16,11 @@
                 
                 //NODE URL LOCAL
                 pathApiNode = "http://localhost:1600";
+                urlbase = 'http://192.168.0.2';
 
-                urlbase = 'http://192.168.1.20';
             } else {
                 
-                pathApiNode = urlbase + "/WebApiRta";
+                pathApiNode = urlbase + "/WEB_API_NODE_JS";
             }
                
             var configService = {
