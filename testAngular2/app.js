@@ -79,7 +79,28 @@
 
             angular.verficar_perfil_usuario = function(opcion) {
 
-                return true;
+                if (loginService.UserData.PERFIL_USUARIO=== 1) {
+                    return true;
+                }
+
+
+                switch (opcion) {
+
+                    case "cotProductoDesarrollado":
+                        if (loginService.UserData.PERFIL_USUARIO === 1 || loginService.UserData.PERFIL_USUARIO === 2) return true;
+                        break;
+
+                    case "cotExportacionPedidos":
+                        if (loginService.UserData.PERFIL_USUARIO === 1 || oginService.UserData.PERFIL_USUARIO === 3) return true;
+                        break;
+
+                    case "cotUsuarios":
+                        if (loginService.UserData.PERFIL_USUARIO === 1 ) return true;
+                        break;
+                }
+
+
+                return false;
 
                 if (!loginService.hasSession)
                     return false;
@@ -262,6 +283,18 @@
                     }
                 }
             })
+            .state("cotExportacionPedidos", {
+                url: "/cotExportacionPedidos",
+                views: {
+                    '': {
+                        templateUrl: "modules/cotExportacionPedidos/cotExportacionPedidos.html?rand=" + rand,
+                        controller: "cotExportacionPedidos"
+                    },
+                    'templateModal@cotProductoDesarrollado': {
+                        templateUrl: "modules/modals/scriptModal.html?rand=" + rand
+                    }
+                }
+            })
             .state("cotProductoModificado", {
                 url: "/cotProductoModificado",
                 views: {
@@ -334,12 +367,12 @@
                     }
                 }
             })
-            .state("gestionEspesores", {
-                url: "/gestionEspesores",
+            .state("cotUsuarios", {
+                url: "/cotUsuarios",
                 views: {
                     '': {
-                        templateUrl: "modules/gestionEspesores/gestionEspesores.html?rand=" + rand,
-                        controller: "gestionEspesores"
+                        templateUrl: "modules/cotUsuarios/cotUsuarios.html?rand=" + rand,
+                        controller: "cotUsuarios"
                     },
                     'templateModal@adminUploadArchivos': {
                         templateUrl: "modules/modals/scriptModal.html?rand=" + rand

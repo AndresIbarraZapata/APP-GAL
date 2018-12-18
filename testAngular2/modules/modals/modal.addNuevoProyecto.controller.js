@@ -49,8 +49,14 @@
 
             vm.obj_producto_seleccionado.VALOR = parseFloat(vm.obj_producto_seleccionado.CANTIDAD) * parseFloat(vm.obj_producto_seleccionado.VALOR);
 
+            if (vm.obj_producto_seleccionado.CANTIDAD > vm.obj_producto_seleccionado.CAN_DISPONIBLE) {
+                vm.obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD = true;
+            } else {
+                vm.obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD = false;
+            }
             //vm.obj_producto_seleccionado.forEach((item) => {
             //    item.VALOR = parseFloat(item.CANTIDAD) * parseFloat(item.VALOR);
+
             //});
 
             /*totalizar costos*/
@@ -61,12 +67,17 @@
            
    
 
-            vm.obj_producto_seleccionado.foreach((item) => {
+            vm.obj_producto_seleccionado.forEach((item) => {
                 vm.obj_totales.costo_cliente += parsefloat(item.costo_prom_final);
+         
+
             });
 
       
         }
+
+        vm.listaMotivos = [];
+        vm.listaPrecios = [];
 
         function get_productos_desarrollados() {
 
@@ -75,14 +86,21 @@
                 .then(function (data) {
               
                     if (data.data.length > 0 && data.data[0].length > 0) {
+                        vm.listaMotivos = data.data[1];
 
                         vm.list_productos_desarrollados = data.data[0];
                         vm.list_productos_desarrollados.forEach(function (item, index) {
-                            item.D_REFERENCIA = item.ID_ITEM.trim() + " - " + item.REFERENCIA_PT.trim() + " - " + item.D_REFERENCIA_PT.trim();
+                            item.D_REFERENCIA =  item.REFERENCIA_PT.trim() + " - " + item.D_REFERENCIA_PT.trim();
                             
                             item.REFERENCIA_PT = item.REFERENCIA_PT.trim();
                             item.D_REFERENCIA_PT = item.D_REFERENCIA_PT.trim();
                             item.PJ_DSCTO = item.PJ_DSCTO.toString();
+                            if (item.CANTIDAD > item.CAN_DISPONIBLE) {
+                                item.SW_SIN_DISPONIBILIDAD = true;
+                            } else {
+                                item.SW_SIN_DISPONIBILIDAD = false;
+                            }
+
                         });
 
                         vm.list_productos_desarrollados.push({
@@ -170,6 +188,12 @@
 
             if (!isRegistroValido(vm.obj_producto_seleccionado.CANTIDAD) || parseInt(vm.obj_producto_seleccionado.CANTIDAD) < 1) {
                 toastr.warning("Debe ingresar una cantidad válida del producto.");
+                return;
+            }
+
+
+            if (vm.obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD) {
+                toastr.info("El producto que va agregar se encuentra sin disponibilidad de inventario para la cantidad solicitada");
                 return;
             }
 

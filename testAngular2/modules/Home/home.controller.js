@@ -24,23 +24,50 @@
                 d_centro_operacion: ""
             }
 
-            vm.listItemsMenu = [
-                {
-                    icon_class: "check-square-o",
-                    sref: "cotProductoDesarrollado",
-                    d_menu: "cotizaciones"
-                }
-                //{
-                //    icon_class: "pencil-square-o",
-                //    sref: "cotProductoModificado",
-                //    d_menu: "Producto Modificado"
-                //},
-                //{
-                //    icon_class: "plus-square-o",
-                //    sref: "cotRegNuevoProducto",
-                //    d_menu: "Producto Nuevo"
-                //}
-            ];
+
+            if (loginService.UserData.PERFIL_USUARIO === 1) {
+                vm.listItemsMenu = [
+                    {
+                        icon_class: "check-square-o",
+                        sref: "cotProductoDesarrollado",
+                        d_menu: "PEDIDOS"
+                    },
+                    {
+                        icon_class: "pencil-square-o",
+                        sref: "cotExportacionPedidos",
+                        d_menu: "Exportación pedidos"
+                    },
+                    {
+                        icon_class: "plus-square-o",
+                        sref: "cotUsuarios",
+                        d_menu: "Gestión usuarios"
+                    }
+                ];
+            }
+
+            if (loginService.UserData.PERFIL_USUARIO === 2) {
+                vm.listItemsMenu = [
+                    {
+                        icon_class: "check-square-o",
+                        sref: "cotProductoDesarrollado",
+                        d_menu: "PEDIDOS"
+                    }
+                ];
+            }
+
+            if (loginService.UserData.PERFIL_USUARIO === 3) {
+                vm.listItemsMenu = [
+                    {
+                        icon_class: "plus-square-o",
+                        sref: "cotUsuarios",
+                        d_menu: "Gestión usuarios"
+                    }
+                ];
+            }
+
+
+
+           
 
             vm.verificarPerfil = function(opcion) {
                return angular.verficar_perfil_usuario(opcion);

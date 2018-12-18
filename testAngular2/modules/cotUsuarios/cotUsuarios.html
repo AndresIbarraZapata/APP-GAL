@@ -1,0 +1,122 @@
+﻿<div class="content-wrapper"
+     style="background-color: #f9f9f9; min-height: 587px; padding-top: 15px;">
+    <div class="container-fluid">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box" style="margin-bottom: 10px;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef;">
+                    <h3 class="box-title">
+                       Gestión nuevos usuarios
+                    </h3>
+                    <!--<div class="box-tools pull-right">
+                        <button class="btn btn-box-tool"
+                                ng-click="limpiar_formulario()"
+                                tooltip-placement="top"
+                                type="button"
+                                uib-tooltip="Limpiar Formulario">
+                            <i class="fa fa-refresh"
+                               style="font-size: 23px;"></i>
+                        </button>
+                    </div>-->
+                </div>
+                <div class="box-body">
+                    <fieldset id="myFieldset">
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombres</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.nombres" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.apellidos" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Docuemnto</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.documento" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bodega</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.bodega" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Cargo</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.cargo" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>PERFIL</label>
+                                    <select class="form-control" ng-model="objUsuarios.perfil">
+
+                                        <option value="">Seleccione </option>
+                                        <option value="1">ADMINISTRADOR</option>
+                                        <option value="2">VENDEDOR</option>
+                                        <option value="2">OPERADOR</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.usuario" style="text-transform: uppercase">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Constraseña</label>
+                                    <input type="text" class="form-control" placeholder="... " ng-model="objUsuarios.password" style="text-transform: uppercase">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row text-center">
+                            <div class="col-md-2 col-md-offset-5">
+                                <button class="btn btn-box-tool btn-rta col-md-12"
+                                        ng-click="insertUsuario()"
+                                        style="margin-bottom: 15px"
+                                        type="button"
+                                        tooltip-placement="left"
+                                        uib-tooltip="Registrar Producto">
+                                    <i class="fa fa-check-circle"
+                                       style="font-size: 31px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view="templateModal"></div>

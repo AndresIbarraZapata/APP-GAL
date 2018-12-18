@@ -6,7 +6,7 @@
                 <div class="box-header with-border"
                      style="border-bottom: 1px solid #efefef;">
                     <h3 class="box-title">
-                       Ver cotizaciones
+                       Ver Pedidos
                     </h3>
                 </div>
                 <div class="box-body">
@@ -51,7 +51,7 @@
         <div class="box-header with-border"
              style="border-bottom: 1px solid #efefef;">
             <h3 class="box-title">
-                Cotización Nro. <b style="font-size: larger;">PW - {{obj_encabezado_cotizacion.cs_cotizacion}}</b>
+                Pedido Nro. <b style="font-size: larger;">PW - {{obj_encabezado_cotizacion.cs_cotizacion}}</b>
             </h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool"
@@ -68,32 +68,48 @@
             <fieldset ng-disabled="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2" id="myFieldset">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label>Documento cliente</label>
-                            <input  type="text" class="form-control" placeholder="Documento " ng-model="obj_encabezado_cotizacion.codigo_cliente" style="text-transform: uppercase" ng-blur="getInformacioncliente()">
+                            <input type="text" class="form-control" placeholder="Documento " ng-model="obj_encabezado_cotizacion.codigo_cliente" style="text-transform: uppercase" ng-blur="getInformacioncliente()">
+                        </div>-->
+                        <div class="form-group">
+                            <label>Filtrar Cliente:</label>
+
+                            <select class="form-control font-madecentro font_size_15px"
+                                    id="seleccion_cliente"></select>
                         </div>
+
                     </div>
+                <div class="col-md-4">
+                    <button class="btn btn-rta font_size_16px" ng-click="getInformacioncliente()" type="submit" style="margin-top: 26px;">Buscar cliente</button>
+                </div>
+                
+                </div>
+                <div class="row">
+
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Nombre completo cliente</label> 
+                            <label>Nombre completo cliente</label>
                             <input disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.nombre_cliente" style="text-transform: uppercase">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Establecimiento</label>
-                            <input  disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.establecimiento" style="text-transform: uppercase">
+                            <input  type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.establecimiento" style="text-transform: uppercase">
                         </div>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Código Vendedor</label>
                             <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.codigo_vendedor">
                         </div>
                     </div>
-                    
+                </div>
+                <div class="row">
+
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Vendedor</label>
@@ -102,30 +118,89 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Estado vencimiento cartera</label>
-                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.estado_cartera">
+                            <label>Cartera corriente</label>
+                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.cartera_corriente"  ui-number-mask="0">
                         </div>
                     </div>
-                    <!--<div class="col-md-6">
+
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label>Cliente</label>
-                            <input type="text" class="form-control" placeholder="Nombres y Apellidos">
+                            <label>Cartera vencida</label>
+                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.cartera_vencida"  ui-number-mask="0">
                         </div>
-                    </div>-->
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Total cartera</label>
+                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.total_cartera" ui-number-mask="0">
+                        </div>
+                    </div>
+              
+
+                    <div class="col-md-4" ng-show="!swCargarPedido">
+                        <div class="form-group">
+                            <label>Forma de pago</label>
+                            <select class="form-control" ng-model="obj_encabezado_cotizacion.c_forma_pago">
+
+                                <option value="">Seleccione </option>
+                                <option value="0">CONTADO</option>
+                                <option value="1">CRÉDITO</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" ng-show="!swCargarPedido">
+                        <div class="form-group">
+                            <label>Condición de pago</label>
+                            <select style="padding: 0;" class="form-control"
+                                    ng-model="obj_encabezado_cotizacion.c_condicion_pago"
+                                    ng-options="item.C_CONDICION_PAGO as item.D_CONDICION_PAGO for item in lista_condiciones_pago">
+                                <option value="">seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-4"ng-show="swCargarPedido">
+                        <div class="form-group">
+                            <label>Forma de pago</label>
+                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.d_forma_pago">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" ng-show="swCargarPedido">
+                        <div class="form-group">
+                            <label>Condición de pago</label>
+                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.d_condicion_pago">
+                        </div>
+                    </div>
+
                 </div>
                 
                 <div class="row">
-                    
-                    <!--<div class="col-md-4">
-                        <div class="form-group">
-                            <label>Dias vencimiento cartera</label>
-                            <input type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.dias_vencimiento">
-                        </div>
-                    </div>-->
+
+
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Forma de pago</label>
-                            <input disabled="" type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.d_forma_pago"> 
+                            <label>Flete</label>
+                            <input type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.flete">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Observaciones</label>
+                            <!--<input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.cartera_corriente" ui-number-mask="0">-->
+
+                            <textarea  type="text"  rows="4" cols="50"  placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.observaciones"  class="form-control">
+                          
+                            </textarea>
                         </div>
                     </div>
 
@@ -140,13 +215,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--<div class="col-md-6">
-                        <div class="form-group">
-                            <label>Cliente</label>
-                            <input type="text" class="form-control" placeholder="Nombres y Apellidos">
-                        </div>
-                    </div>-->
                 </div>
+
 
                 <div class="row text-center">
                     <div class="col-md-2 col-md-offset-5">
@@ -170,14 +240,14 @@
                         <h3 class="box-title">Agregar productos</h3>
                         <div class="box-tools pull-right">
 
-                            <input class="btn-download-excel"
+                            <!--<input class="btn-download-excel"
                                    id="myButtonControlID"
                                    ng-show="list_productos_seleccionados.length > 0"
                                    style="vertical-align: middle;"
                                    type="button"
                                    uib-tooltip="Exportar a excel"
                                    uib-tooltip-placement="left" 
-                                   uib-tooltip-trigger="mouseenter">
+                                   uib-tooltip-trigger="mouseenter">-->
 
                             <button class="btn btn-box-tool btn-rta"
                                     ng-click="show_modal_seleccion_proyecto()"
@@ -205,7 +275,9 @@
                                             <th>UM</th>
                                             <th>LISTA PRECIO</th>
                                             <th>CANTIDAD</th>
+                                            <th>VALOR UNITARIO</th>
                                             <th>VALOR</th>
+                                            <th>DISPONIBILIDAD</th>
                                             <th style="width: 140px"></th>
                                         </tr>
                                     </thead>
@@ -220,20 +292,19 @@
                                             <td>{{item.UNIDAD_MEDIDA}}</td>
                                             <td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>
                                             <td>{{item.CANTIDAD}}</td>
+                                            <td>${{item.VALOR/item.CANTIDAD | number:0}}</td>
                                             <td>${{item.VALOR | number:0}}</td>
+                                            <td>
+                                                <i title="Estado Cotización"
+                                                   class="fa"
+                                                   ng-class="{'indicador-cotizacion-abierta fa-check' : !item.SW_SIN_DISPONIBILIDAD,
+                                                      'indicador-cotizacion-cerrada fa-times' : item.SW_SIN_DISPONIBILIDAD }"></i>
+                                            </td>
+
+
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <!--<button class="btn btn-rta"
-                                            ng-click="ver_detalle_item_cot(item)"
-                                            title="+ Información">
-                                    <i class="fa fa-eye" style="font-size: 20px;"></i>
-                                </button>
-                                <button class="btn btn-rta"
-                                        ng-click="editar_producto(item)"
-                                        ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
-                                        title="Editar el producto de la lista">
-                                    <i class="fa fa-pencil" style="font-size: 20px;"></i>
-                                </button>-->
+
                                                     <button class="btn btn-rta"
                                                             ng-click="remover_producto(item)"
                                                             ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
@@ -255,47 +326,52 @@
                                 <div class="box box-default" style="border-top: 3px solid gray;">
                                     <div class="box-header with-border">
                                         <h3 class="box-title">
-                                            Totales
+                                            Subtotal
                                         </h3>
                                     </div>
                                     <div class="box-body">
                                         <table class="table table-hover table-condensed table-striped">
 
                                             <tbody>
-                                            <tr>
-                                                <td><span>% Descuento:</span></td>
+                                                <tr>
+                                                    <td><span>Subtotal:</span></td>
+                                                    <td><b>{{(obj_totales.total) | currency:"$":0}}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span>% Descuento:</span></td>
 
-                                                <td>
-                                                    <input aria-describedby="basic-addon1"
-                                                           class="form-control"
-                                                           ng-model="obj_totales.pj_descuento"
-                                                           placeholder="..."
-                                                           required
-                                                           x-validacion-auto="porcentaje"
-                                                           ng-change="totalizar_producto()">
-                                                </td>
-                                            </tr>
+                                                    <td>
+                                                        <input aria-describedby="basic-addon1"
+                                                               class="form-control"
+                                                               ng-model="obj_totales.pj_descuento"
+                                                               placeholder="..."
+                                                               required
+                                                               x-validacion-auto="porcentaje"
+                                                               ng-change="totalizar_producto()">
+                                                    </td>
+                                                </tr>
 
-                                            <tr>
-                                                <td><span>Valor Descuento:</span></td>
-                                                <td><b>{{obj_totales.vr_descuento | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>% Iva:</span></td>
-                                                <td><b>{{obj_totales.pj_iva}}%</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>Base/Imp:</span></td>
-                                                <td><b>{{(obj_totales.total - obj_totales.vr_iva) | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>Impuesto:</span></td>
-                                                <td><b>{{obj_totales.vr_iva | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span><b>Valor Total:</b></span></td>
-                                                <td><b>{{obj_totales.total | currency:"$":0}}</b></td>
-                                            </tr>
+                                                <tr>
+                                                    <td><span>Valor Descuento:</span></td>
+                                                    <td><b>{{obj_totales.vr_descuento | currency:"$":0}}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span>Base/Imp:</span></td>
+                                                    <td><b>{{(obj_totales.total - obj_totales.vr_iva) | currency:"$":0}}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span>% Iva:</span></td>
+                                                    <td><b>{{obj_totales.pj_iva}}%</b></td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td><span>Impuesto:</span></td>
+                                                    <td><b>{{obj_totales.vr_iva | currency:"$":0}}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span><b>Valor Total:</b></span></td>
+                                                    <td><b>{{obj_totales.total | currency:"$":0}}</b></td>
+                                                </tr>
                                             </tbody>
 
                                         </table>
@@ -421,6 +497,7 @@
                             <th>
                                 <div>
                                     <span>Cotizaci&oacute;n No.</span> <span class="negrita-font-bold">PW - {{obj_encabezado_cotizacion.cs_cotizacion}}</span>
+                                    <div><span>Fecha:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.fecha_cotizacion | toMomentDate}}</span></div>
                                 </div>
                             </th>
                             <th></th>
@@ -428,62 +505,104 @@
                         </tr>
                     </thead>
                     <tbody style="border: 1px solid #ddd;">
-                        <tr>
-                            <td>
-                                <div><span>Documento:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.codigo_cliente}}</span></div>
-                            </td>
-                            <td>
-                                <div><span>Cliente:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.nombre_cliente}}</span></div>
-                            </td>
-                            <td>
-                                <div><span>Establecimiento:</span> <span class="negrita-font-bold">{{obj_encabezado_cotizacion.establecimiento}}</span></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><span>Código Vendedor:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.codigo_vendedor}}</span></div>
-                            </td>
-                            <td>
-                                <div><span>Vendedor:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.nombre_vendedor}}</span></div>
-                            </td>
-                            <td>
-                                <div><span>Estado vencimiento cartera:</span> <span class="negrita-font-bold">{{obj_encabezado_cotizacion.estado_cartera}} </span></div>
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td>
+                            <div><span>NIT:</span> <span class="negrita-font-bold"> 901096612-8</span></div>
+                        </td>
+                        <td>
+                            <div><span>Dirección:</span> <span class="negrita-font-bold"> CR 52 A 10 90 </span></div>
+                        </td>
+                        <td>
+                            <div><span>Telefono :</span> <span class="negrita-font-bold">3224829</span></div>
+                        </td>
+                        <td>
+                            <div><span>Fax :</span> <span class="negrita-font-bold"></span></div>
+                        </td>
+                    </tr>
+                    
 
-                        <tr>
-                            <td>
-                                <div><span>Forma de pago:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.d_forma_pago}} </span></div>
-                            </td>
-                            <td colspan="2">
-                                <div><span>Fecha:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.fecha_cotizacion | toMomentDate}}</span></div>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <div><span>Cliente:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.nombre_cliente}}</span></div>
+                        </td>
+                        <td>
+                            <div><span>Nit:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.codigo_cliente}}</span></div>
+                        </td>
+
+                        <td>
+                            <div><span>Establecimiento:</span> <span class="negrita-font-bold">{{obj_encabezado_cotizacion.establecimiento}}</span></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div><span>Direccion:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.direccion_cliente}}</span></div>
+                        </td>
+                        <td>
+                            <div><span>Cuidad:</span> <span class="negrita-font-bold"> MEDELLIN</span></div>
+                        </td>
+
+                        <td>
+                            <div><span>Telefono:</span> <span class="negrita-font-bold">{{obj_encabezado_cotizacion.telefono_cliente}}</span></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div><span>Vendedor:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.nombre_vendedor}}</span></div>
+                        </td>
+                        <td>
+                            <div><span>Código Vendedor:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.codigo_vendedor}}</span></div>
+                        </td>
+                        <td>
+                            <div><span>Forma de pago:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.d_forma_pago}} </span></div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                       
+                        <td colspan="2">
+                            <div><span>Fecha:</span> <span class="negrita-font-bold"> {{obj_encabezado_cotizacion.fecha_cotizacion | toMomentDate}}</span></div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <table class="table table-hover table-condensed table-striped table-bordered" ng-if="list_productos_seleccionados.length > 0" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>CÓDIGO</th>
+                            <!--<th>CÓDIGO</th>-->
                             <th>REFERENCIA</th>
                             <th>DESCRIPCIÓN</th>
-                            <th>LOCALIZACIÓN</th>
+                            <th>LOCAL.</th>
                             <th>UM</th>
-                            <th>LISTA PRECIO</th>
+                            <!--<th>LISTA PRECIO</th>-->
                             <th>CANTIDAD</th>
+                            <th>PRECIO UNIT</th>
+                            <th>IVA %</th>
+                            <th>DISPONIBILIDAD</th>
                             <th>VALOR</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in list_productos_seleccionados">
 
-                            <td>{{item.ID_ITEM}}</td>
+                            <!--<td>{{item.ID_ITEM}}</td>-->
                             <td>{{item.REFERENCIA_PT}}</td>
                             <td>{{item.D_REFERENCIA_PT}}</td>
                             <td>{{item.ID_LOCALIZACION}}</td>
                             <td>{{item.UNIDAD_MEDIDA}}</td>
-                            <td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>
+                            <!--<td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>-->
                             <td>{{item.CANTIDAD}}</td>
+                            <td>${{item.VALOR/item.CANTIDAD | number:0}}</td>
+                            <td>19%</td>
+                            <td>
+                                <i title="Estado Cotización"
+                                   class="fa"
+                                   ng-class="{'indicador-cotizacion-abierta fa-check' : !item.SW_SIN_DISPONIBILIDAD,
+                                                      'indicador-cotizacion-cerrada fa-times' : item.SW_SIN_DISPONIBILIDAD }"></i>
+                            </td>
                             <td>${{item.VALOR | number:0}}</td>
                         </tr>
                     </tbody>
@@ -517,6 +636,31 @@
                         </td>
                     </tr>
                 </table>
+                
+                <table class="table-striped table-bordered" style="width: 100%; border: 1px solid">
+                    
+                    <tr style="border-bottom: 1px solid gainsboro">
+                        <td>
+                            <div style="margin-left: 5px;"><span>Flete:</span></div>
+                        </td>
+                        <td>
+                            <div><span> {{obj_encabezado_cotizacion.flete}} </span></div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="border-bottom: 1px solid gainsboro">
+                        <td>
+                            <div style="margin-left: 5px;"><span>Observación:</span></div>
+                        </td>
+                        <td>
+                            <div><span> {{obj_encabezado_cotizacion.observaciones}} </span></div>
+                        </td>
+                    </tr>
+                   
+                </table>
+                
+
             </div>
         </div>
     </div>

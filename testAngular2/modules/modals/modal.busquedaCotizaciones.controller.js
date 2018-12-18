@@ -11,6 +11,7 @@
         
         vm.cancel = cancel;
         vm.getDetalleCotizacion = getDetalleCotizacion;
+        vm.cambiarEstadoPedido = cambiarEstadoPedido
 
         vm.listaCotizacionesUsuario = [];
         vm.listaDetalleCotizacion = [];
@@ -64,6 +65,50 @@
                     }
                 });
         }
+
+
+        function cambiarEstadoPedido(item) {
+
+             var csIdCotizacion = item.CS_ID_COTIZACION;
+            var estado = item.ESTADO_COTIZACION
+            if (estado === 1) {
+                return;
+            }
+
+            if (loginService.UserData.PERFIL_USUARIO !== 1) {
+                swal("El usuario no tiene persimos para habilitar el pedido", "", "info");
+                return;
+
+            }
+
+            let text_confirm = "Está seguro de habilitar el pedido ?";
+            modalService.modalFormConfirmacion(text_confirm)
+                .then(() => {
+
+                    let request = {
+                        CS_H_COTIZACION:  csIdCotizacion,
+                        ESTADO_COTIZACION: 1, //cerrado
+                        ID_USUARIO: loginService.UserData.ID_USUARIO
+                    };
+
+                    vm.objectDialog.LoadingDialog("...");
+                    RTAService.updateEstadoHCotizaciones(request)
+                        .then(function (result) {
+
+                            vm.objectDialog.HideDialog();
+
+                            if (result.MSG === "OK") {
+                                swal("COTIZACIÓN CERRADA CORRECTAMENTE.", "", "success");
+                                limpiar_formulario();
+                            } else {
+                                console.error(result.MSG);
+                                toastr.error(result.MSG);
+                            }
+                        });
+                });
+        }
+
+
 
         function cancel() {
             $uibModalInstance.dismiss('cancel');

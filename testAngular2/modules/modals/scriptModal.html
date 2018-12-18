@@ -24,7 +24,7 @@
                             Producto
                         </h3>
                     </div>
-                 
+                  
                     <div class="box-body">
                         <table class="table table-hover table-condensed table-striped table-bordered"
                                ng-if="obj_producto_seleccionado.ID_ITEM != null"
@@ -38,8 +38,12 @@
                                     <th>LOCALIZACIÓN</th>
                                     <th>UM</th>
                                     <th>LISTA PRECIO</th>
+                                    <th>MOTIVO</th>
+                                    <th>CANTIDAD DISPONIBLE</th>
                                     <th>CANTIDAD</th>
                                     <th>VALOR CLIENTE</th>
+                                    <th>DISPONIBILIDAD</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +54,14 @@
                                     <td>{{obj_producto_seleccionado.ID_LOCALIZACION}}</td>
                                     <td>{{obj_producto_seleccionado.UNIDAD_MEDIDA}}</td>
                                     <td>{{obj_producto_seleccionado.C_LISTA_PRECIO}} {{obj_producto_seleccionado.D_LISTA_PRECIO}}</td>
+                                    <td>
+                                        <select style="padding: 0;" class="form-control"
+                                                ng-model="obj_producto_seleccionado.c_motivo"
+                                                ng-options="item.ID_MOTIVO as item.D_MOTIVO for item in listaMotivos">
+                                            <option value="">seleccione</option>
+                                        </select>
+                                    </td>
+                                    <td>{{obj_producto_seleccionado.CAN_DISPONIBLE}}</td>
                                     <td>
                                         <input aria-describedby="basic-addon1"
                                                class="form-control"
@@ -62,6 +74,12 @@
 
 
                                     <td>{{obj_producto_seleccionado.VALOR | number:2}}</td>
+                                    <td>
+                                        <i title="Estado Cotización"
+                                           class="fa"
+                                           ng-class="{'indicador-cotizacion-abierta fa-check' : !obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD,
+                                                      'indicador-cotizacion-cerrada fa-times' : obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD }"></i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -150,8 +168,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in listaCotizacionesUsuario" ng-click="getDetalleCotizacion(item);" style="cursor: pointer">
-                   <td>
+                <tr ng-repeat="item in listaCotizacionesUsuario" style="cursor: pointer">
+                   <td ng-click="cambiarEstadoPedido(item);" >
                        <i title="Estado Cotización" 
                           class="fa" 
                           ng-class="{'indicador-cotizacion-abierta fa-unlock' : item.ESTADO_COTIZACION == 1, 
@@ -160,13 +178,13 @@
                      <td>
                         <span>{{item.TIPO_COTIZACION}}-{{item.CS_TIPO_COTIZACION}}</span>
                     </td>
-                    <td>
+                    <td ng-click="getDetalleCotizacion(item);" >
                         <span>{{item.DOCUMENTO_CLIENTE}}</span>
                     </td>
-                    <td>
+                    <td ng-click="getDetalleCotizacion(item);" >
                         <span style="text-transform: uppercase">{{item.NOMBRES_CLIENTE}} </span>                    
                     </td>
-                    <td>
+                    <td ng-click="getDetalleCotizacion(item);" >
                         <span>{{item.FECHA_COTIZACION | toMomentDate}}</span>
                         <span style="display:none">{{item.FECHA_COTIZACION_FORMAT | toMomentDate}}</span>
                     </td>

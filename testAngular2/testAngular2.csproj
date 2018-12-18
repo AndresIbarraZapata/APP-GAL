@@ -1679,6 +1679,8 @@
     <Content Include="index.html" />
     <Content Include="modules\adminUploadArchivos\adminUploadArchivos.controller.js" />
     <Content Include="modules\adminUploadArchivos\adminUploadArchivos.html" />
+    <Content Include="modules\cotExportacionPedidos\cotExportacionPedidos.controller.js" />
+    <Content Include="modules\cotExportacionPedidos\cotExportacionPedidos.html" />
     <Content Include="modules\cotProductoDesarrollado\cotProductoDesarrollado.controller.js" />
     <Content Include="modules\cotProductoDesarrollado\cotProductoDesarrollado.html" />
     <Content Include="modules\cotProductoModificado\cotProductoModificado.controller.js" />
@@ -1687,8 +1689,8 @@
     <Content Include="modules\cotProductoNuevo\cotProductoNuevo.html" />
     <Content Include="modules\cotRegNuevoProducto\cotRegNuevoProducto.controller.js" />
     <Content Include="modules\cotRegNuevoProducto\cotRegNuevoProducto.html" />
-    <Content Include="modules\gestionEspesores\gestionEspesores.controller.js" />
-    <Content Include="modules\gestionEspesores\gestionEspesores.html" />
+    <Content Include="modules\cotUsuarios\cotUsuarios.controller.js" />
+    <Content Include="modules\cotUsuarios\cotUsuarios.html" />
     <Content Include="modules\gestionManoObraCif\gestionManoObraCif.controller.js" />
     <Content Include="modules\gestionManoObraCif\gestionManoObraCif.html" />
     <Content Include="modules\Home\home.controller.js" />

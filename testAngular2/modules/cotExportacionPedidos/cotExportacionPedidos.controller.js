@@ -5,11 +5,11 @@
     'use strict';
 
     angular.module('appRTA')
-           .controller('cotProductoDesarrollado', cotProductoDesarrollado);
+        .controller('cotExportacionPedidos', cotExportacionPedidos);
 
-    cotProductoDesarrollado.$inject = ['parametrosService', '$scope', 'configService', 'loginService', '$timeout', '$location', '$cookieStore', '$rootScope', '$uibModal', 'RTAService', 'modalService', '$constants'];
+    cotExportacionPedidos.$inject = ['parametrosService', '$scope', 'configService', 'loginService', '$timeout', '$location', '$cookieStore', '$rootScope', '$uibModal', 'RTAService', 'modalService', '$constants'];
 
-    function cotProductoDesarrollado(parametrosService, $scope, configService, loginService, $timeout, $location, $cookieStore, $rootScope, $uibModal, RTAService, modalService, $constants) {
+    function cotExportacionPedidos(parametrosService, $scope, configService, loginService, $timeout, $location, $cookieStore, $rootScope, $uibModal, RTAService, modalService, $constants) {
         var vm = $scope;
         
         function init() {
@@ -31,7 +31,6 @@
             vm.getCliente= getCliente;
 
             vm.swMostrarItems = false;
-            vm.swCargarPedido = false;
 
             vm.list_productos_seleccionados = [];
             vm.lista_condiciones_pago = [];
@@ -58,10 +57,7 @@
                 cartera_corriente: 0,
                 cartera_vencida: 0,
                 total_cartera: 0,
-                c_condicion_pago: "",
-                flete: "",
-                observaciones: "",
-                d_condicion_pago:""
+                c_condicion_pago:""
             };
 
             vm.swMostrarItems = false;
@@ -369,11 +365,11 @@
                         limpiar_formulario();
 
                  
-                          //if (cotizacion.DIAS_VENCIMIENTO_CARTERA > 0) {
-                          //      vm.obj_encabezado_cotizacion.estado_cartera = 'VENCIDA';
-                          //  } else {
-                          //      vm.obj_encabezado_cotizacion.estado_cartera = 'SIN VENCER';
-                          //  }
+                          if (cotizacion.DIAS_VENCIMIENTO_CARTERA > 0) {
+                                vm.obj_encabezado_cotizacion.estado_cartera = 'VENCIDA';
+                            } else {
+                                vm.obj_encabezado_cotizacion.estado_cartera = 'SIN VENCER';
+                            }
                         
 
                         vm.obj_encabezado_cotizacion.codigo_cliente = cotizacion.DOCUMENTO_CLIENTE;
@@ -388,21 +384,14 @@
                         vm.obj_encabezado_cotizacion.d_forma_pago = cotizacion.D_FORMA_PAGO;
                         vm.obj_encabezado_cotizacion.correo_cliente = cotizacion.EMAIL_CLIENTE;
                         vm.obj_encabezado_cotizacion.fecha_cotizacion = cotizacion.FECHA_COTIZACION;
-                        vm.obj_encabezado_cotizacion.c_condicion_pago = cotizacion.CONDICION_PAGO;
-                        vm.obj_encabezado_cotizacion.cartera_corriente = cotizacion.CARTERA_CORRIENTE;
-                        vm.obj_encabezado_cotizacion.cartera_vencida = cotizacion.CARTERA_VENCIDA;
-                        vm.obj_encabezado_cotizacion.total_cartera = cotizacion.TOTAL_CARTERA;
-                        vm.obj_encabezado_cotizacion.flete = cotizacion.FLETE;
-                        vm.obj_encabezado_cotizacion.observaciones = cotizacion.OBSERVACION;
-                        vm.obj_encabezado_cotizacion.d_condicion_pago = cotizacion.D_CONDICION_PAGO;
-
+                    
                         $('#dpFechaCotizacion').data("DateTimePicker").date(moment(cotizacion.FECHA_COTIZACION));
 
                         vm.obj_encabezado_cotizacion.tipo_cotizacion = cotizacion.TIPO_COTIZACION;
                         vm.obj_encabezado_cotizacion.cs_cotizacion = cotizacion.CS_TIPO_COTIZACION;
                         vm.obj_encabezado_cotizacion.cs_h_cotizacion = cotizacion.CS_ID_COTIZACION;
                         vm.obj_encabezado_cotizacion.ESTADO_COTIZACION = cotizacion.ESTADO_COTIZACION;
-                        vm.swCargarPedido = true;
+
                         
 
                         if (cotizacion.listaDetalleCotizacion.length > 0) {
@@ -495,16 +484,6 @@
                 vm.list_productos_seleccionados = [];
                 vm.swMostrarItems = false;
                 vm.obj_encabezado_cotizacion.ESTADO_COTIZACION = 1;
-
-                vm.obj_encabezado_cotizacion.cartera_corriente = 0;
-                vm.obj_encabezado_cotizacion.cartera_vencida = 0;
-                vm.obj_encabezado_cotizacion.total_cartera = 0;
-                vm.obj_encabezado_cotizacion.c_condicion_pago =0;
-                vm.obj_encabezado_cotizacion.flete = "";
-                vm.obj_encabezado_cotizacion.observaciones = "";
-                vm.obj_encabezado_cotizacion.d_condicion_pago = "";
-                vm.swCargarPedido = false;
-
 
                 $('#dpFechaCotizacion').data("DateTimePicker").date(moment());
 
@@ -670,7 +649,7 @@
 
         if (!_.isNull(vm.cookieUser)) {
             if (vm.cookieUser.hasSession && parseInt(vm.cookieUser.UserData.ID_USUARIO) === parseInt(loginService.UserData.ID_USUARIO)) {
-                if ($location.$$path == "/cotProductoDesarrollado" && angular.verficar_perfil_usuario("cotProductoDesarrollado")) {
+                if ($location.$$path == "/cotExportacionPedidos" && angular.verficar_perfil_usuario("cotExportacionPedidos")) {
 
                     angular.VerificarVersionApp();
                     $rootScope.$$childHead.showmodal = false;

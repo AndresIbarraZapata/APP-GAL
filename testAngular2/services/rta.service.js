@@ -14,6 +14,8 @@
         return {
 
             getInformacioncliente: getInformacioncliente,
+            getCliente: getCliente,
+            insertUsuario: insertUsuario,
             generarConsecutivoCotizacion: generarConsecutivoCotizacion,
             insertEncabezadoCotizacion: insertEncabezadoCotizacion,
             insertProductosCotizacion: insertProductosCotizacion,
@@ -67,6 +69,22 @@
             }
         }
 
+        function getCliente() {
+            return $http.get(configService.ApiUrls.UrlGestionCotizaciones + "get_clientes")
+                .then(getClienteComplete)
+                .catch(getClienteFailed);
+
+            function getClienteComplete(response) {
+                return response.data;
+            }
+
+            function getClienteFailed(error) {
+                toastr.error('XHR falló en getCliente', error);
+                return error;
+            }
+        }
+
+
         function getInformacioncliente(documentoCliente) {
             return $http.get(configService.ApiUrls.UrlGestionCotizaciones + "get_informacion_cliente/" + documentoCliente)
                 .then(getInformacionclienteComplete)
@@ -81,6 +99,7 @@
                 return error;
             }
         }
+
 
 
 
@@ -173,7 +192,20 @@
         }
 
 
+        function insertUsuario(request) {
+            return $http.post(configService.ApiUrls.UrlGestionCotizaciones + "insertUsuario/", JSON.stringify(request))
+                .then(insertUsuarioComplete)
+                .catch(insertUsuarioFailed);
 
+            function insertUsuarioComplete(response) {
+                return response.data;
+            }
+
+            function insertUsuarioFailed(error) {
+                console.log('Error en insertUsuario', error);
+                return error;
+            }
+        }
 
 
 

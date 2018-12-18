@@ -79,23 +79,33 @@
                                ui-sref="cotProductoDesarrollado"
                                style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
                                 <span class="font-madecentro">
-                                    &nbsp;Cotizaciones
+                                    &nbsp;Pedidos
                                 </span>
                             </a>
                         </li>
-                        <!--<li class="divider-vertical"
-                            ng-if="verificarPerfil('cotProductoModificado')"></li>
-                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoModificado' }"
-                            ng-if="verificarPerfil('cotProductoModificado')">
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotExportacionPedidos' }"
+                            ng-if="verificarPerfil('cotExportacionPedidos')">
                             <a href="javascript:;"
-                               ui-sref="cotProductoModificado"
+                               ui-sref="cotExportacionPedidos"
                                style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
-                               
                                 <span class="font-madecentro">
-                                    &nbsp;P. Modificado
+                                    &nbsp;Exportación de pedidos
                                 </span>
                             </a>
-                        </li>-->
+                        </li>
+                        <li class="divider-vertical"
+                            ng-if="verificarPerfil('cotUsuarios')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotUsuarios' }"
+                            ng-if="verificarPerfil('cotUsuarios')">
+                            <a href="javascript:;"
+                               ui-sref="cotUsuarios"
+                               style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
+
+                                <span class="font-madecentro">
+                                    &nbsp;Gestión usuarios
+                                </span>
+                            </a>
+                        </li>
                         <!--<li class="divider-vertical"
                                 ng-if="verificarPerfil('cotProductoNuevo')"></li>
                         <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoNuevo' }"
@@ -108,7 +118,6 @@
                                 </span>
                             </a>
                         </li>-->
-                        
                         <!--<li class="divider-vertical"
                             ng-if="verificarPerfil('cotRegNuevoProducto')"></li>
                         <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotRegNuevoProducto' }"
@@ -116,14 +125,12 @@
                             <a href="javascript:;"
                                ui-sref="cotRegNuevoProducto"
                                style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
-                             
+
                                 <span class="font-madecentro">
                                     &nbsp;P. Nuevo
                                 </span>
                             </a>
                         </li>-->
-                        
-
                         <!--<li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -280,8 +287,9 @@
     <script src="modules/uploadImagenProducto/uploadImagenProducto.controller.js?v=1.0.0"></script>
     <script src="modules/cotProductoModificado/cotProductoModificado.controller.js?v=1.0.0"></script>
     <script src="modules/gestionManoObraCif/gestionManoObraCif.controller.js?=1.0.0"></script>
-    <script src="modules/gestionEspesores/gestionEspesores.controller.js?=1.0.0"></script>
     <script src="modules/cotRegNuevoProducto/cotRegNuevoProducto.controller.js?=1.0.0"></script>
+    <script src="modules/cotExportacionPedidos/cotExportacionPedidos.controller.js"></script>
+    <script src="modules/cotUsuarios/cotUsuarios.controller.js"></script>
 
     <!--modals-->
     <script src="modules/modals/modal.confirmaciones.controller.js?v=1.0.0"></script>
