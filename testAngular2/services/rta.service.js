@@ -16,6 +16,9 @@
             getInformacioncliente: getInformacioncliente,
             getCliente: getCliente,
             insertUsuario: insertUsuario,
+            updateUsuario: updateUsuario,
+            eliminarUsuario: eliminarUsuario,
+            getUsuarios: getUsuarios,
             generarConsecutivoCotizacion: generarConsecutivoCotizacion,
             insertEncabezadoCotizacion: insertEncabezadoCotizacion,
             insertProductosCotizacion: insertProductosCotizacion,
@@ -203,6 +206,55 @@
 
             function insertUsuarioFailed(error) {
                 console.log('Error en insertUsuario', error);
+                return error;
+            }
+        }
+
+        function updateUsuario(request) {
+            return $http.post(configService.ApiUrls.UrlGestionCotizaciones + "updateUsuario/", JSON.stringify(request))
+                .then(updateUsuarioComplete)
+                .catch(updateUsuarioFailed);
+
+            function updateUsuarioComplete(response) {
+                return response.data;
+            }
+
+            function updateUsuarioFailed(error) {
+                console.log('Error en updateUsuario', error);
+                return error;
+            }
+        }
+
+        function eliminarUsuario(request) {
+            return $http.post(configService.ApiUrls.UrlGestionCotizaciones + "eliminarUsuario/", JSON.stringify(request))
+                .then(eliminarUsuarioComplete)
+                .catch(eliminarUsuarioComplete);
+
+            function eliminarUsuarioComplete(response) {
+                return response.data;
+            }
+
+            function eliminarUsuarioComplete(error) {
+                console.log('Error en eliminarUsuario', error);
+                return error;
+            }
+        }
+
+
+        function getUsuarios() {
+            //$rootScope.progressbar.start();
+            return $http.get(configService.ApiUrls.UrlGestionCotizaciones + "getUsuarios")
+                .then(getUsuariosComplete)
+                .catch(getUsuariosFailed);
+
+            function getUsuariosComplete(response) {
+                //$rootScope.progressbar.complete();
+                return response.data;
+            }
+
+            function getUsuariosFailed(error) {
+                //$rootScope.progressbar.reset();
+                toastr.error('XHR falló en getUsuarios', error);
                 return error;
             }
         }

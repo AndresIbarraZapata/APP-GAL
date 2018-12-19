@@ -5,11 +5,11 @@
     'use strict';
 
     angular.module('appRTA')
-           .controller('cotProductoDesarrollado', cotProductoDesarrollado);
+        .controller('cotPedidos', cotPedidos);
 
-    cotProductoDesarrollado.$inject = ['parametrosService', '$scope', 'configService', 'loginService', '$timeout', '$location', '$cookieStore', '$rootScope', '$uibModal', 'RTAService', 'modalService', '$constants'];
+    cotPedidos.$inject = ['parametrosService', '$scope', 'configService', 'loginService', '$timeout', '$location', '$cookieStore', '$rootScope', '$uibModal', 'RTAService', 'modalService', '$constants'];
 
-    function cotProductoDesarrollado(parametrosService, $scope, configService, loginService, $timeout, $location, $cookieStore, $rootScope, $uibModal, RTAService, modalService, $constants) {
+    function cotPedidos(parametrosService, $scope, configService, loginService, $timeout, $location, $cookieStore, $rootScope, $uibModal, RTAService, modalService, $constants) {
         var vm = $scope;
         
         function init() {
@@ -350,7 +350,7 @@
                     .then(function (result) {
 
                         if (result.MSG === "OK") {
-                            swal("SE HA INICIADO LA COTIZACIÓN CORRECTAMENTE", "", "success");
+                            swal("SE HA INICIADO EL PEDIDO CORRECTAMENTE", "", "success");
                             vm.swMostrarItems = true;
                             vm.obj_encabezado_cotizacion.cs_h_cotizacion = result.OUT_CS_H_COTIZACION;
                         }
@@ -421,7 +421,7 @@
 
             function cerrar_cotizacion() {
 
-                let text_confirm = "Está seguro de cerrar la cotización?";
+                let text_confirm = "Está seguro de cerrar el pedido?";
                 modalService.modalFormConfirmacion(text_confirm)
                     .then(() => {
 
@@ -438,7 +438,7 @@
                                 vm.objectDialog.HideDialog();
 
                                 if (result.MSG === "OK") {
-                                    swal("COTIZACIÓN CERRADA CORRECTAMENTE.", "", "success");
+                                    swal("PEDIDO CERRADA CORRECTAMENTE.", "", "success");
                                     limpiar_formulario();
                                 } else {
                                     console.error(result.MSG);
@@ -625,7 +625,7 @@
 
                            vm.list_productos_seleccionados = data.data[0];
                        } else {
-                           toastr.warning("No se encontró items asociados a la cotización");
+                           toastr.warning("No se encontró items asociados");
                            vm.list_productos_seleccionados = [];
                        }
                    });
@@ -633,7 +633,7 @@
 
             function remover_producto(producto) {
 
-                let text_confirm = "Está seguro de eliminar el item de la cotización?";
+                let text_confirm = "Está seguro de eliminar el item deL PEDIDO?";
                 modalService.modalFormConfirmacion(text_confirm)
                     .then(() => {
 
@@ -670,7 +670,7 @@
 
         if (!_.isNull(vm.cookieUser)) {
             if (vm.cookieUser.hasSession && parseInt(vm.cookieUser.UserData.ID_USUARIO) === parseInt(loginService.UserData.ID_USUARIO)) {
-                if ($location.$$path == "/cotProductoDesarrollado" && angular.verficar_perfil_usuario("cotProductoDesarrollado")) {
+                if ($location.$$path == "/cotPedidos" && angular.verficar_perfil_usuario("cotPedidos")) {
 
                     angular.VerificarVersionApp();
                     $rootScope.$$childHead.showmodal = false;

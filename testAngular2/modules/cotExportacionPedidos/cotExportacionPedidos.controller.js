@@ -410,7 +410,7 @@
 
             function cerrar_cotizacion() {
 
-                let text_confirm = "Está seguro de cerrar la cotización?";
+                let text_confirm = "Está seguro de cerrar el pedido?";
                 modalService.modalFormConfirmacion(text_confirm)
                     .then(() => {
 
@@ -427,7 +427,7 @@
                                 vm.objectDialog.HideDialog();
 
                                 if (result.MSG === "OK") {
-                                    swal("COTIZACIÓN CERRADA CORRECTAMENTE.", "", "success");
+                                    swal("PEDIDO CERRADO CORRECTAMENTE.", "", "success");
                                     limpiar_formulario();
                                 } else {
                                     console.error(result.MSG);

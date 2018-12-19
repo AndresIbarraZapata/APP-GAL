@@ -1,0 +1,124 @@
+﻿<div class="content-wrapper"
+     style="background-color: #f9f9f9; min-height: 587px; padding-top: 15px;">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="box" style="margin-bottom: 10px;">
+                <div class="box-header with-border"
+                     style="border-bottom: 1px solid #efefef;text-align: center;">
+                    <h3 class="box-title">
+                        <b>PEDIDOS</b> 
+                    </h3>
+                    
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool"
+                                ng-click="getCotizacionesByUsusario()"
+                                tooltip-placement="top"
+                                type="button"
+                                uib-tooltip="actualizar">
+                            <i class="fa fa-refresh"
+                               style="font-size: 23px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+
+                    <div class="row" style="padding: 50px;">
+
+
+                        <table class="table table-condensed table-hover table-striped"
+                               st-table="listaCotizacionesUsuario"
+                               ng-if="listaCotizacionesUsuario.length > 0">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th st-sort="CS_TIPO_COTIZACION"># Pedido</th>
+                                    <th st-sort="DOCUMENTO_CLIENTE">Documento</th>
+                                    <th st-sort="NOMBRES_CLIENTE">Cliente</th>
+                                    <th st-sort="FECHA_COTIZACION">Fecha</th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6">
+                                        <input class="form-control"
+                                               placeholder="Búsqueda general"
+                                               st-search
+                                               type="search" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in listaCotizacionesUsuario" style="cursor: pointer">
+                                <td >
+                                    <i title="Estado Pedido"
+                                       class="fa"
+                                       ng-class="{'indicador-cotizacion-abierta fa-unlock' : item.ESTADO_COTIZACION == 1,
+                                     'indicador-cotizacion-cerrada fa-lock' : item.ESTADO_COTIZACION == 2}"></i>
+                                </td>
+                                <td>
+                                    <span>{{item.TIPO_COTIZACION}}-{{item.CS_TIPO_COTIZACION}}</span>
+                                </td>
+                                <td ng-click="getDetalleCotizacion(item);">
+                                    <span>{{item.DOCUMENTO_CLIENTE}}</span>
+                                </td>
+                                <td ng-click="getDetalleCotizacion(item);">
+                                    <span style="text-transform: uppercase">{{item.NOMBRES_CLIENTE}} </span>
+                                </td>
+                                <td ng-click="getDetalleCotizacion(item);">
+                                    <span>{{item.FECHA_COTIZACION | toMomentDate}}</span>
+                                    <span style="display:none">{{item.FECHA_COTIZACION_FORMAT | toMomentDate}}</span>
+                                </td>
+                                <td>
+                                                
+                                    <button class="btn btn-rta"
+                                            ng-click="cambiarEstadoPedido(item);"
+                                            title="Modificar">
+                                        <i class="fa fa-edit" style="font-size: 20px;"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td class="text-center"
+                                    colspan="6"
+                                    style="background: rgb(239, 239, 239);">
+                                    <div st-displayed-pages="15"
+                                         st-items-by-page="15"
+                                         st-pagination=""
+                                         st-template="pagination.custom.html"></div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+               
+
+                    </div>
+
+
+
+                    <button class="btn btn-rta col-sm-12"
+                            ng-click="cerrar_cotizacion()"
+                            ng-if="obj_encabezado_cotizacion.ESTADO_COTIZACION == 1"
+                            style="margin-bottom: 10px;"
+                            title="Cerrar Cotización"
+                            type="button">
+                        <i class="fa fa-minus-square" style="font-size: 28px;"></i>
+                    </button>
+                    <!--<button class="btn btn-rta col-sm-12"
+            ng-click="guardar()"
+            title="Enviar Cotización"
+            type="button">
+        <i class="fa fa-paper-plane" style="font-size: 25px;"></i>
+    </button>-->
+                </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+<div ui-view="templateModal"></div>

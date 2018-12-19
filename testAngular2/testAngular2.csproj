@@ -1679,10 +1679,12 @@
     <Content Include="index.html" />
     <Content Include="modules\adminUploadArchivos\adminUploadArchivos.controller.js" />
     <Content Include="modules\adminUploadArchivos\adminUploadArchivos.html" />
+    <Content Include="modules\cotGestionPedidos\cotGestionPedidos.controller.js" />
+    <Content Include="modules\cotGestionPedidos\cotGestionPedidos.html" />
     <Content Include="modules\cotExportacionPedidos\cotExportacionPedidos.controller.js" />
     <Content Include="modules\cotExportacionPedidos\cotExportacionPedidos.html" />
-    <Content Include="modules\cotProductoDesarrollado\cotProductoDesarrollado.controller.js" />
-    <Content Include="modules\cotProductoDesarrollado\cotProductoDesarrollado.html" />
+    <Content Include="modules\cotPedidos\cotPedidos.controller.js" />
+    <Content Include="modules\cotPedidos\cotPedidos.html" />
     <Content Include="modules\cotProductoModificado\cotProductoModificado.controller.js" />
     <Content Include="modules\cotProductoModificado\cotProductoModificado.html" />
     <Content Include="modules\cotProductoNuevo\cotProductoNuevo.controller.js" />

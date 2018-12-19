@@ -29,7 +29,7 @@
                 vm.listItemsMenu = [
                     {
                         icon_class: "check-square-o",
-                        sref: "cotProductoDesarrollado",
+                        sref: "cotPedidos",
                         d_menu: "PEDIDOS"
                     },
                     {
@@ -41,7 +41,12 @@
                         icon_class: "plus-square-o",
                         sref: "cotUsuarios",
                         d_menu: "Gestión usuarios"
-                    }
+                    },
+                {
+                    icon_class: "pencil",
+                    sref: "cotGestionPedidos",
+                    d_menu: "Gestión pedidos"
+                }
                 ];
             }
 
@@ -49,7 +54,7 @@
                 vm.listItemsMenu = [
                     {
                         icon_class: "check-square-o",
-                        sref: "cotProductoDesarrollado",
+                        sref: "cotPedidos",
                         d_menu: "PEDIDOS"
                     }
                 ];
@@ -64,6 +69,17 @@
                     }
                 ];
             }
+
+            if (loginService.UserData.PERFIL_USUARIO === 4) {
+                vm.listItemsMenu = [
+                    {
+                        icon_class: "pencil",
+                        sref: "cotGestionPedidos",
+                        d_menu: "Gestión pedidos"
+                    }
+                ];
+            }
+
 
 
 

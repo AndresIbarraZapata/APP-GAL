@@ -72,27 +72,19 @@
                             </a>
                         </li>
                         <li class="divider-vertical"
-                            ng-if="verificarPerfil('cotProductoDesarrollado')"></li>
-                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotProductoDesarrollado' }"
-                            ng-if="verificarPerfil('cotProductoDesarrollado')">
+                            ng-if="verificarPerfil('cotPedidos')"></li>
+                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotPedidos' }"
+                            ng-if="verificarPerfil('cotPedidos')">
                             <a href="javascript:;"
-                               ui-sref="cotProductoDesarrollado"
+                               ui-sref="cotPedidos"
                                style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
                                 <span class="font-madecentro">
                                     &nbsp;Pedidos
                                 </span>
                             </a>
                         </li>
-                        <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotExportacionPedidos' }"
-                            ng-if="verificarPerfil('cotExportacionPedidos')">
-                            <a href="javascript:;"
-                               ui-sref="cotExportacionPedidos"
-                               style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
-                                <span class="font-madecentro">
-                                    &nbsp;Exportación de pedidos
-                                </span>
-                            </a>
-                        </li>
+
+
                         <li class="divider-vertical"
                             ng-if="verificarPerfil('cotUsuarios')"></li>
                         <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotUsuarios' }"
@@ -131,54 +123,37 @@
                                 </span>
                             </a>
                         </li>-->
-                        <!--<li class="divider-vertical"></li>
+                        <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 Procesos especiales <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" style="right: 0; left: inherit;">
-                                <li ng-class="{'active' : location.path() == '/adminUploadArchivos' }"
-                                    ng-if="verificarPerfil('adminUploadArchivos')">
+                                <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotExportacionPedidos' }"
+                                    ng-if="verificarPerfil('cotExportacionPedidos')">
                                     <a href="javascript:;"
-                                       ui-sref="adminUploadArchivos">
+                                       ui-sref="cotExportacionPedidos"
+                                       style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
                                         <span class="font-madecentro">
-                                            &nbsp;Gestión de costos
+                                            &nbsp;Exportación de pedidos
                                         </span>
                                     </a>
                                 </li>
 
-                                <li ng-class="{'active' : location.path() == '/uploadImagenProducto' }"
-                                    ng-if="verificarPerfil('uploadImagenProducto')">
+                                <li class="hvr-fade" ng-class="{'active' : location.path() == '/cotGestionPedidos' }"
+                                    ng-if="verificarPerfil('cotGestionPedidos')">
                                     <a href="javascript:;"
-                                       ui-sref="uploadImagenProducto">
+                                       ui-sref="cotGestionPedidos"
+                                       style="text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);">
                                         <span class="font-madecentro">
-                                            &nbsp;Gestión archivos producto desarrollado
+                                            &nbsp;Gestión de pedidos
                                         </span>
                                     </a>
                                 </li>
 
-                                <li ng-class="{'active' : location.path() == '/gestionManoObraCif' }"
-                                    ng-if="verificarPerfil('gestionManoObraCif')">
-                                    <a href="javascript:;"
-                                       ui-sref="gestionManoObraCif">
-                                        <span class="font-madecentro">
-                                            &nbsp;Gestión Mano de obra / CIF
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li ng-class="{'active' : location.path() == '/gestionEspesores' }"
-                                    ng-if="verificarPerfil('gestionEspesores')">
-                                    <a href="javascript:;"
-                                       ui-sref="gestionEspesores">
-                                        <span class="font-madecentro">
-                                            &nbsp;Gestión espesores
-                                        </span>
-                                    </a>
-                                </li>
 
                             </ul>
-                        </li>-->
+                        </li>
                         <!-- Cuenta del usuario -->
                         <li class="dropdown user user-menu">
                             <a class="dropdown-toggle"
@@ -281,7 +256,7 @@
     <script type="text/javascript" src="app.js?v=1.0.0"></script>
     <script type="text/javascript" src="modules/Home/home.controller.js?v=1.0.0"></script>
     <script type="text/javascript" src="modules/UserLogin/userLogin.controller.js?v=1.0.0"></script>
-    <script src="modules/cotProductoDesarrollado/cotProductoDesarrollado.controller.js?v=1.0.0"></script>
+    <script src="modules/cotPedidos/cotPedidos.controller.js?v=1.0.0"></script>
     <script src="modules/adminUploadArchivos/adminUploadArchivos.controller.js?v=1.0.0"></script>
     <script src="modules/cotProductoNuevo/cotProductoNuevo.controller.js?v=1.0.0"></script>
     <script src="modules/uploadImagenProducto/uploadImagenProducto.controller.js?v=1.0.0"></script>
@@ -290,6 +265,7 @@
     <script src="modules/cotRegNuevoProducto/cotRegNuevoProducto.controller.js?=1.0.0"></script>
     <script src="modules/cotExportacionPedidos/cotExportacionPedidos.controller.js"></script>
     <script src="modules/cotUsuarios/cotUsuarios.controller.js"></script>
+    <script src="modules/cotGestionPedidos/cotGestionPedidos.controller.js"></script>
 
     <!--modals-->
     <script src="modules/modals/modal.confirmaciones.controller.js?v=1.0.0"></script>

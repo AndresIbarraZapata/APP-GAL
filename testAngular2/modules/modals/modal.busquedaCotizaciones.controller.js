@@ -69,6 +69,7 @@
 
         function cambiarEstadoPedido(item) {
 
+            return;
              var csIdCotizacion = item.CS_ID_COTIZACION;
             var estado = item.ESTADO_COTIZACION
             if (estado === 1) {

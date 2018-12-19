@@ -86,14 +86,19 @@
 
                 switch (opcion) {
 
-                    case "cotProductoDesarrollado":
+                    case "cotPedidos":
                         if (loginService.UserData.PERFIL_USUARIO === 1 || loginService.UserData.PERFIL_USUARIO === 2) return true;
                         break;
 
                     case "cotExportacionPedidos":
-                        if (loginService.UserData.PERFIL_USUARIO === 1 || oginService.UserData.PERFIL_USUARIO === 3) return true;
+                        if (loginService.UserData.PERFIL_USUARIO === 1 || loginService.UserData.PERFIL_USUARIO === 3) return true;
                         break;
 
+                    case "cotGestionPedidos":
+                        if (loginService.UserData.PERFIL_USUARIO === 1 || loginService.UserData.PERFIL_USUARIO === 4) return true;
+                        break;
+
+                    
                     case "cotUsuarios":
                         if (loginService.UserData.PERFIL_USUARIO === 1 ) return true;
                         break;
@@ -271,14 +276,14 @@
                     }
                 }
             })
-            .state("cotProductoDesarrollado", {
-                url: "/cotProductoDesarrollado",
+            .state("cotPedidos", {
+                url: "/cotPedidos",
                 views: {
                     '': {
-                        templateUrl: "modules/cotProductoDesarrollado/cotProductoDesarrollado.html?rand=" + rand,
-                        controller: "cotProductoDesarrollado"
+                        templateUrl: "modules/cotPedidos/cotPedidos.html?rand=" + rand,
+                        controller: "cotPedidos"
                     },
-                    'templateModal@cotProductoDesarrollado': {
+                    'templateModal@cotPedidos': {
                         templateUrl: "modules/modals/scriptModal.html?rand=" + rand
                     }
                 }
@@ -290,11 +295,24 @@
                         templateUrl: "modules/cotExportacionPedidos/cotExportacionPedidos.html?rand=" + rand,
                         controller: "cotExportacionPedidos"
                     },
-                    'templateModal@cotProductoDesarrollado': {
+                    'templateModal@cotPedidos': {
                         templateUrl: "modules/modals/scriptModal.html?rand=" + rand
                     }
                 }
             })
+            .state("cotGestionPedidos", {
+                url: "/cotGestionPedidos",
+                views: {
+                    '': {
+                        templateUrl: "modules/cotGestionPedidos/cotGestionPedidos.html?rand=" + rand,
+                        controller: "cotGestionPedidos"
+                    },
+                    'templateModal@cotPedidos': {
+                        templateUrl: "modules/modals/scriptModal.html?rand=" + rand
+                    }
+                }
+            })
+
             .state("cotProductoModificado", {
                 url: "/cotProductoModificado",
                 views: {

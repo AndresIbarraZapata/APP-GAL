@@ -75,7 +75,7 @@
 
                                     <td>{{obj_producto_seleccionado.VALOR | number:2}}</td>
                                     <td>
-                                        <i title="Estado Cotización"
+                                        <i title="Estado pedido"
                                            class="fa"
                                            ng-class="{'indicador-cotizacion-abierta fa-check' : !obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD,
                                                       'indicador-cotizacion-cerrada fa-times' : obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD }"></i>
@@ -144,7 +144,7 @@
 <script type="text/ng-template" id="frmBusquedaCotizaciones.html">
     <div class="modal-header text-center">
         <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Lista de Cotizaciones</h4>
+        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Lista de Pedidos</h4>
     </div>
     <div class="modal-body" style="background-color: #f9f9f9;">
         <table class="table table-condensed table-hover table-striped"
@@ -153,7 +153,7 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th st-sort="CS_TIPO_COTIZACION"># Cotización</th>
+                    <th st-sort="CS_TIPO_COTIZACION"># Pedido</th>
                     <th st-sort="DOCUMENTO_CLIENTE">Documento</th>
                     <th st-sort="NOMBRES_CLIENTE">Cliente</th>
                     <th st-sort="FECHA_COTIZACION">Fecha</th>
@@ -170,7 +170,7 @@
             <tbody>
                 <tr ng-repeat="item in listaCotizacionesUsuario" style="cursor: pointer">
                    <td ng-click="cambiarEstadoPedido(item);" >
-                       <i title="Estado Cotización" 
+                       <i title="Estado Pedido" 
                           class="fa" 
                           ng-class="{'indicador-cotizacion-abierta fa-unlock' : item.ESTADO_COTIZACION == 1, 
                                      'indicador-cotizacion-cerrada fa-lock' : item.ESTADO_COTIZACION == 2}"></i>
@@ -278,7 +278,7 @@
 <script type="text/ng-template" id="frmDetalleItemCot.html">
     <div class="modal-header text-center">
         <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Detalle Producto Cotización</h4>
+        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Detalle Producto Pedido</h4>
     </div>
     <div class="modal-body">
 
@@ -489,7 +489,7 @@
 <script type="text/ng-template" id="frmEditarItemCot.html">
     <div class="modal-header text-center">
         <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Editar Producto Cotización</h4>
+        <h4 class="modal-title font-madecentro" style="font-weight: 600;">Editar Producto Pedido</h4>
     </div>
     <div class="modal-body">
 
