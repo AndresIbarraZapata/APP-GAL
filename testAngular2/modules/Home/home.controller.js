@@ -38,15 +38,16 @@
                         d_menu: "Exportación pedidos"
                     },
                     {
+                        icon_class: "pencil",
+                        sref: "cotGestionPedidos",
+                        d_menu: "Habilitar pedidos"
+                    },
+                    {
                         icon_class: "plus-square-o",
                         sref: "cotUsuarios",
                         d_menu: "Gestión usuarios"
-                    },
-                {
-                    icon_class: "pencil",
-                    sref: "cotGestionPedidos",
-                    d_menu: "Gestión pedidos"
-                }
+                    }
+   
                 ];
             }
 
