@@ -27,14 +27,14 @@
                             <i class="fa fa-check-square-o" style="font-size: 28px;"></i>
                         </button>-->
 
-                        <button class="btn btn-rta col-sm-12"
+                        <!--<button class="btn btn-rta col-sm-12"
                                 ng-click="cerrar_cotizacion()"
                                 ng-if="obj_encabezado_cotizacion.ESTADO_COTIZACION == 1"
                                 style="margin-bottom: 10px;"
                                 title="Cerrar pedido"
                                 type="button">
                             <i class="fa fa-minus-square" style="font-size: 28px;"></i>
-                        </button>
+                        </button>-->
                         <!--<button class="btn btn-rta col-sm-12"
                                 ng-click="guardar()"
                                 title="Enviar Cotización"
@@ -275,9 +275,10 @@
                                             <th>UM</th>
                                             <th>LISTA PRECIO</th>
                                             <th>CANTIDAD</th>
+                                            <th>DISPONIBILIDAD</th>
                                             <th>VALOR UNITARIO</th>
                                             <th>VALOR</th>
-                                            <th>DISPONIBILIDAD</th>
+                                          
                                             <th style="width: 140px"></th>
                                         </tr>
                                     </thead>
@@ -292,14 +293,15 @@
                                             <td>{{item.UNIDAD_MEDIDA}}</td>
                                             <td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>
                                             <td>{{item.CANTIDAD}}</td>
-                                            <td>${{item.VALOR/item.CANTIDAD | number:0}}</td>
-                                            <td>${{item.VALOR | number:0}}</td>
                                             <td>
                                                 <i title="Estado pedido"
                                                    class="fa"
                                                    ng-class="{'indicador-cotizacion-abierta fa-check' : !item.SW_SIN_DISPONIBILIDAD,
                                                       'indicador-cotizacion-cerrada fa-times' : item.SW_SIN_DISPONIBILIDAD }"></i>
                                             </td>
+                                            <td>${{item.VALOR/item.CANTIDAD | number:0}}</td>
+                                            <td>${{item.VALOR | number:0}}</td>
+                                           
 
 
                                             <td class="text-center">

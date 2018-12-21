@@ -41,8 +41,9 @@
                                     <th>MOTIVO</th>
                                     <th>CANTIDAD DISPONIBLE</th>
                                     <th>CANTIDAD</th>
-                                    <th>VALOR CLIENTE</th>
                                     <th>DISPONIBILIDAD</th>
+                                    <th>VALOR CLIENTE</th>
+
 
                                 </tr>
                             </thead>
@@ -71,15 +72,16 @@
                                                x-validacion-auto="decimal"
                                                ng-blur="cambio_cantidad_producto()">
                                     </td>
-
-
-                                    <td>{{obj_producto_seleccionado.VALOR | number:2}}</td>
                                     <td>
                                         <i title="Estado pedido"
                                            class="fa"
                                            ng-class="{'indicador-cotizacion-abierta fa-check' : !obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD,
                                                       'indicador-cotizacion-cerrada fa-times' : obj_producto_seleccionado.SW_SIN_DISPONIBILIDAD }"></i>
                                     </td>
+
+
+                                    <td>{{obj_producto_seleccionado.VALOR | number:2}}</td>
+
                                 </tr>
                             </tbody>
                         </table>

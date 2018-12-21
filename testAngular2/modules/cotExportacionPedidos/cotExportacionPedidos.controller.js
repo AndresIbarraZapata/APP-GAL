@@ -57,7 +57,11 @@
                 cartera_corriente: 0,
                 cartera_vencida: 0,
                 total_cartera: 0,
-                c_condicion_pago:""
+                c_condicion_pago: "",
+                d_condicion_pago: "",
+                flete: "",
+                observaciones:""
+
             };
 
             vm.swMostrarItems = false;
@@ -373,7 +377,7 @@
                         
 
                         vm.obj_encabezado_cotizacion.codigo_cliente = cotizacion.DOCUMENTO_CLIENTE;
-
+                        
                         vm.obj_encabezado_cotizacion.documento_cliente = cotizacion.DOCUMENTO_CLIENTE;
                         vm.obj_encabezado_cotizacion.nombre_cliente = cotizacion.NOMBRES_CLIENTE;
                         vm.obj_encabezado_cotizacion.establecimiento = cotizacion.ESTABLECIMIENTO;
@@ -384,6 +388,9 @@
                         vm.obj_encabezado_cotizacion.d_forma_pago = cotizacion.D_FORMA_PAGO;
                         vm.obj_encabezado_cotizacion.correo_cliente = cotizacion.EMAIL_CLIENTE;
                         vm.obj_encabezado_cotizacion.fecha_cotizacion = cotizacion.FECHA_COTIZACION;
+                        vm.obj_encabezado_cotizacion.flete = cotizacion.FLETE;
+                        vm.obj_encabezado_cotizacion.observaciones = cotizacion.OBSERVACION;
+                        vm.obj_encabezado_cotizacion.d_condicion_pago = cotizacion.D_CONDICION_PAGO;
                     
                         $('#dpFechaCotizacion').data("DateTimePicker").date(moment(cotizacion.FECHA_COTIZACION));
 
