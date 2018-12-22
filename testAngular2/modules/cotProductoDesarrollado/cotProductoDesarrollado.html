@@ -6,7 +6,7 @@
                 <div class="box-header with-border"
                      style="border-bottom: 1px solid #efefef;">
                     <h3 class="box-title">
-                       Ver cotizaciones
+                        Ver cotizaciones
                     </h3>
                 </div>
                 <div class="box-body">
@@ -46,355 +46,354 @@
             </div>
         </div>
         <div class="col-md-10">
-        <div id="form-cotizacion">
-        <div class="box" style="margin-bottom: 10px;">
-        <div class="box-header with-border"
-             style="border-bottom: 1px solid #efefef;">
-            <h3 class="box-title">
-                Cotización Nro. <b style="font-size: larger;">PW - {{obj_encabezado_cotizacion.cs_cotizacion}}</b>
-            </h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool"
-                        ng-click="limpiar_formulario()"
-                        tooltip-placement="top"
-                        type="button"
-                        uib-tooltip="Limpiar Formulario">
-                    <i class="fa fa-refresh"
-                       style="font-size: 23px;"></i>
-                </button>
-            </div>
-        </div>
-        <div class="box-body">
-            <fieldset ng-disabled="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2" id="myFieldset">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Documento cliente</label>
-                            <input  type="text" class="form-control" placeholder="Documento " ng-model="obj_encabezado_cotizacion.codigo_cliente" style="text-transform: uppercase" ng-blur="getInformacioncliente()">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Nombre completo cliente</label> 
-                            <input disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.nombre_cliente" style="text-transform: uppercase">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Establecimiento</label>
-                            <input  disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.establecimiento" style="text-transform: uppercase">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Código Vendedor</label>
-                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.codigo_vendedor">
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Vendedor</label>
-                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.nombre_vendedor">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Estado vencimiento cartera</label>
-                            <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.estado_cartera">
-                        </div>
-                    </div>
-                    <!--<div class="col-md-6">
-                        <div class="form-group">
-                            <label>Cliente</label>
-                            <input type="text" class="form-control" placeholder="Nombres y Apellidos">
-                        </div>
-                    </div>-->
-                </div>
-                
-                <div class="row">
-                    
-                    <!--<div class="col-md-4">
-                        <div class="form-group">
-                            <label>Dias vencimiento cartera</label>
-                            <input type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.dias_vencimiento">
-                        </div>
-                    </div>-->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Forma de pago</label>
-                            <input disabled="" type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.d_forma_pago"> 
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <div class="input-group date" id="dpFechaCotizacion">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                                <input disabled="" type="text" class="form-control font_size_15px"/>
-                            </div>
-                        </div>
-                    </div>
-                    <!--<div class="col-md-6">
-                        <div class="form-group">
-                            <label>Cliente</label>
-                            <input type="text" class="form-control" placeholder="Nombres y Apellidos">
-                        </div>
-                    </div>-->
-                </div>
-
-                <div class="row text-center">
-                    <div class="col-md-2 col-md-offset-5">
-                        <button class="btn btn-box-tool btn-rta col-md-12"
-                                ng-click="generarConsecutivoCotizacion()"
-                                ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
-                                style="margin-bottom: 15px"
-                                type="button"
-                                tooltip-placement="left"
-                                uib-tooltip="Comenzar cotización">
-                            <i class="fa fa-check-circle"
-                               style="font-size: 31px;"></i>
-                        </button>
-                    </div>
-                </div>
-            </fieldset>
-            <div>
-                <div class="box" style="margin-bottom: 10px; border-top: 3px solid #dadada !important;" ng-show="swMostrarItems">
+            <div id="form-cotizacion">
+                <div class="box" style="margin-bottom: 10px;">
                     <div class="box-header with-border"
-                         style="border-bottom: 1px solid #efefef; padding-bottom: 20px;">
-                        <h3 class="box-title">Agregar productos</h3>
+                         style="border-bottom: 1px solid #efefef;">
+                        <h3 class="box-title">
+                            Cotización Nro. <b style="font-size: larger;">PW - {{obj_encabezado_cotizacion.cs_cotizacion}}</b>
+                        </h3>
                         <div class="box-tools pull-right">
-
-                            <input class="btn-download-excel"
-                                   id="myButtonControlID"
-                                   ng-show="list_productos_seleccionados.length > 0"
-                                   style="vertical-align: middle;"
-                                   type="button"
-                                   uib-tooltip="Exportar a excel"
-                                   uib-tooltip-placement="left" 
-                                   uib-tooltip-trigger="mouseenter">
-
-                            <button class="btn btn-box-tool btn-rta"
-                                    ng-click="show_modal_seleccion_proyecto()"
-                                    ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                            <button class="btn btn-box-tool"
+                                    ng-click="limpiar_formulario()"
+                                    tooltip-placement="top"
                                     type="button"
-                                    style="height: 40px; width: 40px; padding: 0;">
-                                <i class="fa fa-plus-circle"
-                                   style="font-size: 31px;"
-                                   tooltip-placement="left"
-                                   uib-tooltip="Agregar nuevo producto"></i>
+                                    uib-tooltip="Limpiar Formulario">
+                                <i class="fa fa-refresh"
+                                   style="font-size: 23px;"></i>
                             </button>
                         </div>
                     </div>
                     <div class="box-body">
-                        <div class="row no-margin" style="overflow-x: scroll;">
-                            <!--<pre>{{data_materiales_producto | json}}</pre>-->
-                            <div class="col-md-12">
-                                <table class="table table-hover table-condensed table-striped table-bordered" ng-if="list_productos_seleccionados.length > 0">
-                                    <thead>
-                                        <tr>
-                                            <th>CÓDIGO</th>
-                                            <th>REFERENCIA</th>
-                                            <th>DESCRIPCIÓN</th>
-                                            <th>LOCALIZACIÓN</th>
-                                            <th>UM</th>
-                                            <th>LISTA PRECIO</th>
-                                            <th>CANTIDAD</th>
-                                            <th>VALOR</th>
-                                            <th style="width: 140px"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr ng-repeat="item in list_productos_seleccionados">
-
-                                            <td>{{item.ID_ITEM}}</td>
-                                            <td>{{item.REFERENCIA_PT}}</td>
-                                            <td>{{item.D_REFERENCIA_PT}}</td>
-                                            <td>{{item.ID_LOCALIZACION}}</td>
-                                            <td>{{item.UNIDAD_MEDIDA}}</td>
-                                            <td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>
-                                            <td>{{item.CANTIDAD}}</td>
-                                            <td>${{item.VALOR | number:0}}</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <!--<button class="btn btn-rta"
-                                            ng-click="ver_detalle_item_cot(item)"
-                                            title="+ Información">
-                                    <i class="fa fa-eye" style="font-size: 20px;"></i>
-                                </button>
-                                <button class="btn btn-rta"
-                                        ng-click="editar_producto(item)"
-                                        ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
-                                        title="Editar el producto de la lista">
-                                    <i class="fa fa-pencil" style="font-size: 20px;"></i>
-                                </button>-->
-                                                    <button class="btn btn-rta"
-                                                            ng-click="remover_producto(item)"
-                                                            ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
-                                                            title="Eliminar el producto de la lista">
-                                                        <i class="fa fa-trash-o" style="font-size: 20px;"></i>
-                                                    </button>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                     
-                        <div class="row" ng-if="list_productos_seleccionados.length > 0">
-                            <div class="col-md-4 col-md-offset-8">
-                                <div class="box box-default" style="border-top: 3px solid gray;">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">
-                                            Totales
-                                        </h3>
+                        <fieldset ng-disabled="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2" id="myFieldset">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Documento cliente</label>
+                                        <input type="text" class="form-control" placeholder="Documento " ng-model="obj_encabezado_cotizacion.codigo_cliente" style="text-transform: uppercase" ng-blur="getInformacioncliente()">
                                     </div>
-                                    <div class="box-body">
-                                        <table class="table table-hover table-condensed table-striped">
-
-                                            <tbody>
-                                            <tr>
-                                                <td><span>% Descuento:</span></td>
-
-                                                <td>
-                                                    <input aria-describedby="basic-addon1"
-                                                           class="form-control"
-                                                           ng-model="obj_totales.pj_descuento"
-                                                           placeholder="..."
-                                                           required
-                                                           x-validacion-auto="porcentaje"
-                                                           ng-change="totalizar_producto()">
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><span>Valor Descuento:</span></td>
-                                                <td><b>{{obj_totales.vr_descuento | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>% Iva:</span></td>
-                                                <td><b>{{obj_totales.pj_iva}}%</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>Base/Imp:</span></td>
-                                                <td><b>{{(obj_totales.total - obj_totales.vr_iva) | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>Impuesto:</span></td>
-                                                <td><b>{{obj_totales.vr_iva | currency:"$":0}}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span><b>Valor Total:</b></span></td>
-                                                <td><b>{{obj_totales.total | currency:"$":0}}</b></td>
-                                            </tr>
-                                            </tbody>
-
-                                        </table>
-                                        <hr/>
-                                        <div>
-                                            <button class="btn btn-rtan" ng-click="imprimirCotizacion()">
-                                                Imprimir Cotización
-                                            </button>
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Nombre completo cliente</label>
+                                        <input disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.nombre_cliente" style="text-transform: uppercase">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Establecimiento</label>
+                                        <input disabled="" type="text" class="form-control" placeholder="..." ng-model="obj_encabezado_cotizacion.establecimiento" style="text-transform: uppercase">
                                     </div>
                                 </div>
                             </div>
-                            <hr />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Código Vendedor</label>
+                                        <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.codigo_vendedor">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Vendedor</label>
+                                        <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.nombre_vendedor">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Estado vencimiento cartera</label>
+                                        <input type="text" disabled="" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.estado_cartera">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Cliente</label>
+                                        <input type="text" class="form-control" placeholder="Nombres y Apellidos">
+                                    </div>
+                                </div>-->
+                            </div>
+
+                            <div class="row">
+
+                                <!--<div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Dias vencimiento cartera</label>
+                                        <input type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.dias_vencimiento">
+                                    </div>
+                                </div>-->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Forma de pago</label>
+                                        <input disabled="" type="text" class="form-control" placeholder="..." style="text-transform: uppercase" ng-model="obj_encabezado_cotizacion.d_forma_pago">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Fecha</label>
+                                        <div class="input-group date" id="dpFechaCotizacion">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                            <input disabled="" type="text" class="form-control font_size_15px" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Cliente</label>
+                                        <input type="text" class="form-control" placeholder="Nombres y Apellidos">
+                                    </div>
+                                </div>-->
+                            </div>
+
+                            <div class="row text-center">
+                                <div class="col-md-2 col-md-offset-5">
+                                    <button class="btn btn-box-tool btn-rta col-md-12"
+                                            ng-click="generarConsecutivoCotizacion()"
+                                            ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                            style="margin-bottom: 15px"
+                                            type="button"
+                                            tooltip-placement="left"
+                                            uib-tooltip="Comenzar cotización">
+                                        <i class="fa fa-check-circle"
+                                           style="font-size: 31px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div>
+                            <div class="box" style="margin-bottom: 10px; border-top: 3px solid #dadada !important;" ng-show="swMostrarItems">
+                                <div class="box-header with-border"
+                                     style="border-bottom: 1px solid #efefef; padding-bottom: 20px;">
+                                    <h3 class="box-title">Agregar productos</h3>
+                                    <div class="box-tools pull-right">
+
+                                        <input class="btn-download-excel"
+                                               id="myButtonControlID"
+                                               ng-show="list_productos_seleccionados.length > 0"
+                                               style="vertical-align: middle;"
+                                               type="button"
+                                               uib-tooltip="Exportar a excel"
+                                               uib-tooltip-placement="left"
+                                               uib-tooltip-trigger="mouseenter">
+
+                                        <button class="btn btn-box-tool btn-rta"
+                                                ng-click="show_modal_seleccion_proyecto()"
+                                                ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                                type="button"
+                                                style="height: 40px; width: 40px; padding: 0;">
+                                            <i class="fa fa-plus-circle"
+                                               style="font-size: 31px;"
+                                               tooltip-placement="left"
+                                               uib-tooltip="Agregar nuevo producto"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row no-margin" style="overflow-x: scroll;">
+                                        <!--<pre>{{data_materiales_producto | json}}</pre>-->
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped table-bordered" ng-if="list_productos_seleccionados.length > 0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>CÓDIGO</th>
+                                                        <th>REFERENCIA</th>
+                                                        <th>DESCRIPCIÓN</th>
+                                                        <th>LOCALIZACIÓN</th>
+                                                        <th>UM</th>
+                                                        <th>LISTA PRECIO</th>
+                                                        <th>CANTIDAD</th>
+                                                        <th>VALOR</th>
+                                                        <th style="width: 140px"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr ng-repeat="item in list_productos_seleccionados">
+
+                                                        <td>{{item.ID_ITEM}}</td>
+                                                        <td>{{item.REFERENCIA_PT}}</td>
+                                                        <td>{{item.D_REFERENCIA_PT}}</td>
+                                                        <td>{{item.ID_LOCALIZACION}}</td>
+                                                        <td>{{item.UNIDAD_MEDIDA}}</td>
+                                                        <td>{{item.C_LISTA_PRECIO}}-{{item.D_LISTA_PRECIO}}</td>
+                                                        <td>{{item.CANTIDAD}}</td>
+                                                        <td>${{item.VALOR | number:0}}</td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group">
+                                                                <!--<button class="btn btn-rta"
+                                                                            ng-click="ver_detalle_item_cot(item)"
+                                                                            title="+ Información">
+                                                                    <i class="fa fa-eye" style="font-size: 20px;"></i>
+                                                                </button>
+                                                                <button class="btn btn-rta"
+                                                                        ng-click="editar_producto(item)"
+                                                                        ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                                                        title="Editar el producto de la lista">
+                                                                    <i class="fa fa-pencil" style="font-size: 20px;"></i>
+                                                                </button>-->
+                                                                <button class="btn btn-rta"
+                                                                        ng-click="remover_producto(item)"
+                                                                        ng-hide="obj_encabezado_cotizacion.ESTADO_COTIZACION == 2"
+                                                                        title="Eliminar el producto de la lista">
+                                                                    <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                                                                </button>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" ng-if="list_productos_seleccionados.length > 0">
+                                        <div class="col-md-4 col-md-offset-8">
+                                            <div class="box box-default" style="border-top: 3px solid gray;">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">
+                                                        Totales
+                                                    </h3>
+                                                </div>
+                                                <div class="box-body">
+                                                    <table class="table table-hover table-condensed table-striped">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><span>% Descuento:</span></td>
+
+                                                                <td>
+                                                                    <input aria-describedby="basic-addon1"
+                                                                           class="form-control"
+                                                                           ng-model="obj_totales.pj_descuento"
+                                                                           placeholder="..."
+                                                                           required
+                                                                           x-validacion-auto="porcentaje"
+                                                                           ng-change="totalizar_producto()">
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><span>Valor Descuento:</span></td>
+                                                                <td><b>{{obj_totales.vr_descuento | currency:"$":0}}</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span>% Iva:</span></td>
+                                                                <td><b>{{obj_totales.pj_iva}}%</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span>Base/Imp:</span></td>
+                                                                <td><b>{{(obj_totales.total - obj_totales.vr_iva) | currency:"$":0}}</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span>Impuesto:</span></td>
+                                                                <td><b>{{obj_totales.vr_iva | currency:"$":0}}</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span><b>Valor Total:</b></span></td>
+                                                                <td><b>{{obj_totales.total | currency:"$":0}}</b></td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+                                                    <hr />
+                                                    <div>
+                                                        <button class="btn btn-rtan" ng-click="imprimirCotizacion()">
+                                                            Imprimir Cotización
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
+
+
+
+
 
                     </div>
                 </div>
             </div>
-            
-            
-            
-            
 
-        </div>
-        </div>
-        </div>
+            <div id="divTableDataHolder" style="display: none">
+                <!--style="display: none"-->
 
-        <div id="divTableDataHolder" style="display: none">
-            <!--style="display: none"-->
+                <table class="table table-hover table-condensed table-striped table-bordered"
+                       ng-if="list_productos_seleccionados.length > 0"
+                       style="border: 1px solid #797979;font-size: 12px;border-spacing: 0;border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #c5c3c3; font-weight: 100;border: 1px solid #797979;" rowspan="2">PRODUCT</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">DESCRIPCTION</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">REFERENCIA</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">EAN</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;width: 80px;" colspan="3">EMPAQUE</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;width: 80px;" colspan="2">CUBICAGE</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">MEDIDAS ( H x W x D )</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">MATERIAL</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">COLOR</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">COSTO</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">TC</th>
+                            <th style="background: black; font-weight: 100; border: 1px solid #797979; color: white;" rowspan="2">FOB</th>
+                            <th style="background: white; font-weight: 100; border: 1px solid #797979;width: 12px;" rowspan="2"></th>
+                            <th style="background: #ffc800;font-weight: 100;border: 1px solid #797979;" colspan="3">Modulacion x Contenedor 4o pies</th>
+                        </tr>
+                        <tr>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">H</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">W</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">D</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">Cbm</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">Kg</th>
 
-            <table class="table table-hover table-condensed table-striped table-bordered"
-                   ng-if="list_productos_seleccionados.length > 0"
-                   style="border: 1px solid #797979;font-size: 12px;border-spacing: 0;border-collapse: collapse;">
-                <thead>
-                <tr>
-                    <th style="background: #c5c3c3; font-weight: 100;border: 1px solid #797979;" rowspan="2">PRODUCT</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">DESCRIPCTION</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">REFERENCIA</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;" rowspan="2">EAN</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;width: 80px;" colspan="3">EMPAQUE</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;width: 80px;" colspan="2">CUBICAGE</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">MEDIDAS ( H x W x D )</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">MATERIAL</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">COLOR</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">COSTO</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;" rowspan="2">TC</th>
-                    <th style="background: black; font-weight: 100; border: 1px solid #797979; color: white;" rowspan="2">FOB</th>
-                    <th style="background: white; font-weight: 100; border: 1px solid #797979;width: 12px;" rowspan="2"></th>
-                    <th style="background: #ffc800;font-weight: 100;border: 1px solid #797979;" colspan="3">Modulacion x Contenedor 4o pies</th>
-                </tr>
-                <tr>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">H</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">W</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">D</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">Cbm</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">Kg</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">QTY</th>
+                            <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">CBM</th>
+                            <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">KG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in list_productos_seleccionados" style="height: 230px;">
+                            <td style="border: 1px solid #797979; width: 230px; vertical-align: middle; text-align: center;padding: 15px;">
+                                <img height="212"
+                                     src='{{dominio}}/img_rta/{{item.ID_ITEM}}.png'
+                                     style="margin-top: 5px"
+                                     width="215" />
+                                <!--onerror="this.src = 'assets/img/placeholder.png';"-->
+                            </td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.D_REFERENCIA_PT}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.REFERENCIA_PT}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;"></td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_H}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_W}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_D}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.CUBICAGE_C}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.CUBICAGE_K}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.MEDIDAS_PT}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;"></td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.COLOR}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">{{item.VALOR}}</td>
 
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">QTY</th>
-                    <th style="background: #c5c3c3; font-weight: 100; border: 1px solid #797979;">CBM</th>
-                    <th style="background: #c5c3c3;font-weight: 100;border: 1px solid #797979;">KG</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="item in list_productos_seleccionados" style="height: 230px;">
-                    <td style="border: 1px solid #797979; width: 230px; vertical-align: middle; text-align: center;padding: 15px;">
-                        <img height="212"
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">$0</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">$0</td>
 
-                             src='{{dominio}}/img_rta/{{item.ID_ITEM}}.png'
-                             style="margin-top: 5px"
-                             width="215"/>
-                        <!--onerror="this.src = 'assets/img/placeholder.png';"-->
-                    </td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.D_REFERENCIA_PT}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.REFERENCIA_PT}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;"></td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_H}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_W}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.EMPAQUE_D}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.CUBICAGE_C}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.CUBICAGE_K}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.MEDIDAS_PT}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;"></td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">{{item.COLOR}}</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">{{item.VALOR}}</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;"></td>
 
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">$0</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle;text-align: center;">$0</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
+                            <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;"></td>
 
-                    <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
-                    <td style="border: 1px solid #797979; vertical-align: middle; text-align: center;">0</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        
             <div id="detalleCot"
                  class="container flex-optionspopup-container position-flex-internal-values"
                  style="display: none;width: 100% !important; top: 5px; overflow: auto; margin: 15px !important;">
@@ -519,6 +518,177 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
 <div ui-view="templateModal"></div>
+
+<table style="border: 1px solid;width: 100%;">
+    <tr>
+        <td>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 30%;">
+                        LOGO
+                    </td>
+                    <td style="width: 30%;">
+                        <div style="text-align: center">
+                            PEDIDOS DE VENTA
+                        </div>
+                    </td>
+                    <td style="width: 30%;"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <span>N. I. T. : 901096612-8</span><br />
+                            <span>Direccion: CR 52 A 10 90</span><br />
+                            <span>Telefono : 3224829</span><br />
+                            <span>Fax: </span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div>
+                            <span>Número : 001-PW-#</span><br />
+                            <span>Fecha : 2018-DIC-05</span>
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid;">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="border-right: 1px solid;">
+                        <div>
+                            <span>Cliente  : TECNOPRECISION SAS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>Nit:       811008649-8</span><br />
+                            <span>Contacto :</span><br />
+                            <span>Direccion: CR 65 29 59</span><br />
+                            <span>Ciudad   : MEDELLIN</span><br />
+                            <span>Telefono : 2650437</span><br />
+                            <span>Fax: </span>
+                        </div>
+                    </td>
+                    <td style="vertical-align: unset;">
+                        <div>
+                            <span>Vendedor     :  43185043      HERRERA GALEANO MARISOL</span><br />
+                            <span>Forma de Pago:  08   CREDITO A 8 DIAS</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid;">
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="border-bottom: 1px solid;">Referencia</th>
+                        <th style="border-bottom: 1px solid;">Descripción</th>
+                        <th style="border-bottom: 1px solid;">Local</th>
+                        <th style="border-bottom: 1px solid;">U.M</th>
+                        <th style="border-bottom: 1px solid;">Cant_Ped</th>
+                        <th style="border-bottom: 1px solid;">Precio_Unit.</th>
+                        <th style="border-bottom: 1px solid;">IVA %</th>
+                        <th style="border-bottom: 1px solid;">Descuentos</th>
+                        <th style="border-bottom: 1px solid;">Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="text-align: right;">
+                        <td>
+                            795I
+                        </td>
+                        <td>
+                            GAS SPRING APLICACIONES VARIAS INOX
+                        </td>
+                        <td>001-03</td>
+                        <td>UND</td>
+                        <td>2</td>
+                        <td>80,000.00</td>
+                        <td>19.00</td>
+                        <td>0.00</td>
+                        <td>160,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <table style="width: 100%;">
+                <tr>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>TOTAL BRUTO</span><br />
+                        <span>160,000.00</span>
+                    </td>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>DSCTO x LINEA</span><br />
+                        <span>0.00</span>
+                    </td>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>DSCTO GLOBAL  0.00%</span><br />
+                        <span>0.00</span>
+                    </td>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>SUB-TOTAL</span><br />
+                        <span>160,000.00</span>
+                    </td>
+
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>VALOR IVA</span><br />
+                        <span>30,400.00</span>
+                    </td>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>IMPOCONSUMOS</span><br />
+                        <span>0.00</span>
+                    </td>
+                    <td style="border-top: 1px solid;border-right: 1px solid;">
+                        <span>TOTAL</span><br />
+                        <span>190,400.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-top: 1px solid;border-bottom: 1px solid;" colspan="7">
+                        <div style="padding: 10px;">
+                            <span>Observación:</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="padding-top: 40px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <span>-------------------------------</span>
+                                <br />
+                                <span>ELABORADO</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="text-align: center">
+                                <span>-------------------------------</span>
+                                <br />
+                                <span>APROBADO</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="text-align: center">
+                                <span>-------------------------------</span>
+                                <br />
+                                <span>RECIBIDO</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
